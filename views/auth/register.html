@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en" class="no-outlines">
+
+<head>
+  <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/assets/css/_style.css" />
+</head>
+
+  <body style="background-image: url(/assets/images/account/wrapper-bg.jpg);">
+    <div class="wrapper">
+      <br><br>
+      <div class="m-account">
+        <div class="row no-gutters flex-row-reverse">
+          <div class="col-md-6">
+            <div class="m-account--form-w">
+              <div class="m-account--form">
+                <div class="logo">
+                  <img src="/assets/images/logo/Degg_outline.png" alt="" style="width: 75px;" />
+                </div>
+                <form action="/register" method="POST">
+                  <label class="m-account--title text-muted">Developer account</label>
+                  <!-- Error Messages -->
+                  <div id="messages" class="sr-only">
+                    <% if(typeof errors != 'undefined'){ %>
+                      <% errors.forEach(err => { %>
+                        <ul class="error">
+                          <li>
+                            <%= err.msg %>
+                          </li>
+                        </ul>
+                      <% }); %>
+                    <% } %>
+                  </div>
+                  <!-- Full name -->
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <i class="fa fa-user"></i>
+                      </div>
+                      <input type="text" name="full_name" id="full_name" placeholder="Full name" class="form-control" autocomplete="off"
+                        required />
+                    </div>
+                  </div>
+                  <!-- Email -->
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <i class="fa fa-envelope"></i>
+                      </div>
+                      <input type="email" name="email" id="email"placeholder="Email" class="form-control" autocomplete="off" required />
+                    </div>
+                  </div>
+                  <!-- Password -->
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <i class="fa fa-key"></i>
+                      </div>
+                      <input type="password" name="password" id="password" maxlength="12" minlength="8" placeholder="Password" class="form-control" autocomplete="off"
+                        required />
+                    </div>
+                  </div>
+                  <!-- Confirm Password -->
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <i class="fa fa-unlock"></i>
+                      </div>
+                      <input type="password" name="con_password" id="con_password" maxlength="12" minlength="8" placeholder="Confirm password" class="form-control" autocomplete="off" required />
+                    </div>
+                  </div>
+                  <!-- Company name -->
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <i class="fa fa-institution"></i>
+                      </div>
+                      <input type="text" name="company_name" id="company_name" placeholder="Company's name" class="form-control" autocomplete="off"
+                        required />
+                    </div>
+                  </div>
+                  <div class="form-group pt-3">
+                    <label for="agree_terms" class="text-light">
+                        <input type="checkbox" name="agree_terms" id="agree_terms" style="vertical-align: middle; width: 20px;" required />
+                        I agree to all <a href="/term_of_service" class="text-info" target="_blank">terms of service</a>
+                    </label>
+                  </div>
+                  <div class="m-account--actions">
+                    <button type="submit" class="btn btn-block btn-rounded btn-success">
+                      create
+                    </button>
+                  </div>
+                  <br>
+                  <div class="text-center">
+                    <a href="/lock" class="text-muted text-center">Have an account?, Sign in</a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>

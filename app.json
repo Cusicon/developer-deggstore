@@ -1,0 +1,21 @@
+{
+    "name": "developer.deggstore",
+    "description": "A section of Degg store where developers can upload manage their apps.",
+    "repository": "https://github.com/cusicon/developer-degg",
+    "logo": "https://developer.degg.herokuapp.com/images/logo/degg.png",
+    "keywords": [
+        "developer",
+        "developer.deggstore",
+        "deggstore",
+        "store",
+        "desktop app",
+        "desktop",
+        "app",
+        "download",
+        "degg",
+        "games",
+        "download games",
+        "desktop app store",
+        "desktop store"
+    ]
+}

@@ -1,0 +1,156 @@
+<style>    
+  table a {
+    display: block;
+    height: 100%;
+    margin: 0px;
+    padding: 5px 5px;
+    color: #797979;
+  }
+  
+  table a:hover,
+  table a:active,
+  table a:focus {
+    color: #797979;
+    background-color: #dddddd !important;
+  }
+</style>
+
+<!-- App packages -->
+<section id="Apppackages" class="card-box" style="background-color: transparent; border-color: transparent;" method="POST">
+    <div id="ApppackagesCon">
+        <!-- App packages Icon-->
+        <div class="app_packages_icon" style="height: 300px; overflow: hidden !important;">
+            <div class="row">
+                <div class="col-4 col-md-4 col-sm-4">
+                    <center>
+                        <h4 class="m-t0" style="font-weight: lighter; text-transform: unset !important;">
+                            <i class="dripicons-rocket" style="font-size: 250px; opacity: 0.7;"></i>
+                        </h4>
+                    </center>
+                </div>
+                <div class="col-8 col-md-8 col-sm-8">
+                    <p>
+                        <br><br>
+                        <h2><b>App packages</b></h2>
+                        <p>Manage your app's packages, review package history, and rollout for production.  </p>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <div class="">
+            <!-- Add package -->
+            <div class="add_package card-box">
+                <!-- App Package -->
+                <h4 class="m-t-0" style="font-weight: lighter; text-transform: unset !important;">App Package</h4>
+                <br>
+                <div class="app_package" style="border-bottom: 1px solid #eeeeee;">
+                    <label class="text-dark" style="font-weight: bold;">Package <b class="text-danger">*</b></label><br>
+                    <p>
+                        You are only permitted to upload (<b>.exe</b>, <b>.msi</b> or <b>.zip</b>) file.
+                    </p>
+                </div>
+                <br>
+                <button type="button" id="add_package_btn" class="btn btn-md btn-success btn-secondary waves-effect waves-light pull-right" data-toggle="modal" data-target="#addpackageModal">
+                    <span>Add Package</span>
+                </button>
+                <div class="clearfix"></div>
+
+                <div class="modal fade" id="addpackageModal" role="dialog" aria-labelledby="addpackageModal" aria-hidden="true" data-overlayColor="#ffffff">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title mt-0">Add Packages</h5>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <form action="/publish/draft/6532/save" method="POST">
+                                        <label class="text-dark" style="font-weight: bold;">Upload package <b class="text-danger">*</b></label><br>
+                                        <div class="col-12 col-md-12 col-sm-12" style="overflow: hidden; background-color: #eeeeee; height: 150px;">
+                                            <center>
+                                                <span style="font-size: 90px; color: #ccc; margin: 0px !important; padding: 0px !important;">+</span>
+                                            </center>
+                                            <input type="file" name="app_package_input" id="app_package_input" style="position: absolute; opacity: 0; width: 100%; height: 150px; top: 0; left: 0;" required>
+                                        </div>
+                                        <br><br>
+                                        <div class="float-right">
+                                            <input type="submit" value="Done" class="btn btn-success" />
+                                            <input type="button" value="Cancel" class="btn btn-default" data-dismiss="modal" />
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                
+            </div>
+            <br>
+
+            <!-- packages Container -->
+            <div class="packages_con card-box">
+                <div class="row">
+                    <div class="table table-responsive">
+                        <table class="table table-hover m-b-0">
+                            <thead>
+                                <tr>
+                                    <th>Package Version</th>
+                                    <th>Active devices</th>
+                                    <th>Date Uploaded</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <img src="/assets/images/logo/Degg.png" style="width: 20px;" alt="">
+                                        &nbsp;&nbsp;<span style="vertical-align: middle;">1.0</span>
+                                    </td>
+                                    <td id="active_devices">275</td>
+                                    <td id="date_uploaded">Dec 30 2018</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="/assets/images/logo/Degg.png" style="width: 20px;" alt="">
+                                        &nbsp;&nbsp;<span style="vertical-align: middle;">2.0</span>
+                                    </td>
+                                    <td id="active_devices">15</td>
+                                    <td id="date_uploaded">Dec 13 2018</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <img src="/assets/images/logo/Degg.png" style="width: 20px;" alt="">
+                                        &nbsp;&nbsp;<span style="vertical-align: middle;">3.0</span>
+                                    </td>
+                                    <td id="active_devices">100</td>
+                                    <td id="date_uploaded">Dec 15 2018</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <img src="/assets/images/logo/Degg.png" style="width: 20px;" alt="">
+                                        &nbsp;&nbsp;<span style="vertical-align: middle;">4.0</span>
+                                    </td>
+                                    <td id="active_devices">120</td>
+                                    <td id="date_uploaded">Dec 17 2016</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <img src="/assets/images/logo/Degg.png" style="width: 20px;" alt="">
+                                        &nbsp;&nbsp;<span style="vertical-align: middle;">5.0</span>
+                                    </td>
+                                    <td id="active_devices">215</td>
+                                    <td id="date_uploaded">Dec 27 2018</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

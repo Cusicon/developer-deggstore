@@ -1,0 +1,84 @@
+<div class="row">
+  <div class="card-box">
+    <h4 class="m-t-0 header-title">Clickable Wizard</h4>
+    <p class="text-muted m-b-30 font-13">
+      jQuery Stepy is a plugin based on FormToWizard that generates a customizable wizard.
+    </p>
+  
+    <ul id="wizard-clickable-header" class="stepy-header">
+      <li id="wizard-clickable-head-0" class="stepy-active">
+        <div>1</div><span>Set-up release</span>
+      </li>
+      <li id="wizard-clickable-head-1" class="">
+        <div>2</div><span>Review and Publish</span>
+      </li>
+    </ul>
+    <form id="wizard-clickable">
+      <fieldset id="wizard-clickable-step-0" class="stepy-step" style="display: block;">
+        <legend style="display: none;">Set-up release</legend>
+  
+        <div class="row m-t-20">
+          <div class="col-sm-10">
+            <div class="form-group">
+              <label for="firstname1">First Name</label>
+              <input class="form-control" id="firstname1" placeholder="" type="text">
+            </div>
+  
+            <div class="form-group">
+              <label for="username1">User Name</label>
+              <input class="form-control" id="username1" placeholder="" type="text">
+            </div>
+  
+            <div class="form-group">
+              <label for="password11">Password</label>
+              <input class="form-control" id="password11" placeholder="" type="password">
+            </div>
+          </div>
+        </div>
+  
+        <p class="stepy-navigator">
+          <a href="javascript: void(0);" class="btn btn-secondary waves-effect waves-light pull-left">&nbsp;&nbsp;Discard&nbsp;&nbsp;</a>
+          <a href="javascript: void(0);" class="button-next btn btn-secondary waves-effect waves-light">&nbsp;&nbsp;Review&nbsp;&nbsp;</a>
+        </p>
+      </fieldset>
+  
+      <fieldset id="wizard-clickable-step-1" class="stepy-step" style="display: none;">
+        <legend style="display: none;">Review and Publish.</legend>
+  
+        <div class="row m-t-20">
+          <div class="col-sm-10">
+            <div class="form-group">
+              <label for="phonenumber1">Phone Number</label>
+              <input class="form-control" id="phonenumber1" placeholder="" type="text">
+            </div>
+  
+            <div class="form-group">
+              <label for="address1">Address</label>
+              <input class="form-control" id="address1" placeholder="" type="text">
+            </div>
+  
+            <div class="form-group">
+              <label for="aboutme1">About Me</label>
+              <textarea class="form-control" rows="5" id="aboutme1"></textarea>
+            </div>
+          </div>
+        </div>
+        <p class="stepy-navigator">
+          <a href="javascript: void(0);" class="button-back btn btn-default waves-effect pull-left">
+            <i class="mdi mdi-arrow-left-bold"></i>Back
+          </a>
+          <p class="stepy-navigator">
+            <a href="#" class="button-back btn btn-default waves-effect pull-left">
+              <i class="mdi mdi-arrow-left-bold"></i>
+              Back
+            </a>
+            <button type="submit" class="btn btn-primary stepy-finish">Submit</button>
+          </p>
+            <a href="javascript: void(0);" class="button-next btn btn-primary waves-effect waves-light">
+              Next <i class="mdi mdi-arrow-right-bold"></i>
+            </a>
+          </p>
+      </fieldset>
+    </form>
+  </div>
+</div>

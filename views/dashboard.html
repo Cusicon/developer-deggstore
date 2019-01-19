@@ -1,0 +1,74 @@
+<!-- Begin page -->
+<div id="wrapper">
+  <%- include("./partials/header.html"); %>
+  <%- include("./partials/menu.html"); %>
+  <!-- ============================================================== -->
+  <!-- Start right Content here -->
+  <!-- ============================================================== -->
+  <div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <%- include("./partials/page-title.html"); %>
+          </div>
+        </div>
+        <!-- end row -->
+
+        <div class="row">
+          <div class="col-12">
+            <div class="card-box" style="border: transparent; background-color: transparent;">
+              <div class="row">
+                <% if(typeof apps != "undefined" || null) { %>
+                  <% for(var i = 0; i < apps.length; i++) { %>
+                    <% var app = apps[i]; %>
+                      <div class="col-sm-3 col-xl-2">
+                      <div class="file-man-box">
+                        <div class="file-img-box">
+                          <img src="<%= app.app_icon.path || '/store/src/images/icons/Degg_default_icon.png'%>" alt="icon" />
+                        </div>
+                        
+                        <div class="file-man-title">
+                          <a href="/app/publish/<%= app._id %>">
+                            <h5 class="m-b-0 text-overflow" title="<%= app.app_title %>">
+                              <%= app.app_title %>
+                            </h5>
+                          </a>
+                          <p class="m-b-0">
+                            <small><b><%= app.version %></b></small>
+                            <small class="<%= app.status %>" title="<%= app.status.toUpperCase(); %>"></small>
+                            <small><%= app.app_price || "not specified" %></small></p>
+                        </div>
+                      </div>
+                    </div>
+                  <% } %>
+                <% } %>
+              </div>
+              <% if(typeof app == "undefined" || null ) { %>
+                <!-- If Apps are not found Display this -->
+                <br>
+                <center>
+                  <div>
+                    <h1 class="mdi mdi-blur" style="opacity: .5; font-size: 200px;"></h1>
+                    <h1 style="opacity: 0.9; margin: 20px; text-align: center; font-weight: lighter;">No App found!.</h1>
+                  </div>
+                </center>
+              <% } %>
+            </div>
+          </div>
+          <!-- end col -->
+        </div>
+        <!-- end row -->
+      </div>
+      <!-- container -->
+    </div>
+    <!-- content -->
+    <!-- Footer -->
+    <%- include("./partials/footer.html"); %>
+  </div>
+  <!-- ============================================================== -->
+  <!-- End Right content here -->
+  <!-- ============================================================== -->
+</div>
+<!-- END wrapper -->

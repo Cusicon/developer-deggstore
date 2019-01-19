@@ -1,0 +1,143 @@
+<style>
+  table td{
+   padding: 5px !important;
+   vertical-align: middle !important;
+   font-weight: bold; 
+  }
+
+  table a {
+    display: block;
+    height: 100%;
+    margin: 0px;
+    padding: 13.5px 5px;
+    color: #797979;
+  }
+  
+  table a:hover,
+  table a:active,
+  table a:focus {
+    color: #797979;
+    background-color: #dddddd !important;
+  }
+</style>
+
+<!-- Begin page -->
+<div id="wrapper">
+  <%- include("./partials/header.html"); %>
+  <%- include("./partials/menu.html"); %>
+  <!-- ============================================================== -->
+  <!-- Start right Content here -->
+  <!-- ============================================================== -->
+  <div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <%- include("./partials/page-title.html"); %>
+          </div>
+        </div>
+        <!-- end row -->
+
+        <div class="row">
+          <div class="col-12">
+            <div class="card-box" style="background-color: transparent !important;">
+              <!-- Dropdown for filter -->
+              <select name="filter" id="filter" style="border: 1px solid #cccccc;" class="btn btn-sm w-md waves-effect waves-light">
+                <option>Filter</option>
+                <option value="published">Published</option>
+                <option value="drafts">Drafts</option>
+              </select>
+
+              <div class="pull-right">
+                <p>Page <b>1</b> of <b>4</b></p>
+              </div>
+              <h4 class="header-title m-b-30"><br /></h4>
+              <div class="table-responsive">
+                <table class="table table-hover m-b-0">
+                  <thead>
+                     <tr>
+                      <th>APP NAME</th>
+                      <th>PRICE</th>
+                      <th>CURRENT/TOTAL INSTALLS</th>
+                      <th>AVG RATING/ TOTAL NO.</th>
+                      <th>LAST UPDATE</th>
+                      <th>STATUS</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% if(typeof apps != undefined || null) { %>
+                      <% for(var i = 0; i < apps.length; i++) { %>
+                        <% var app = apps[i]; %>
+                        <a href="/app/<%= app._id %>">
+                          <tr>
+                            <td>
+                              <a href="/app/<%= app._id %>">
+                                <img src="/assets/images/logo/Degg_outline_dark.png" style="width: 20px;" alt="">
+                                <span style="vertical-align: middle;"><%= app.app_title %></span>
+                              </a>
+                            </td>
+                            <td id="price">$ 99</td>
+                            <td id="installs">275 / 280</td>
+                            <td id="avg_rating"><span class="fa fa-star text-warning"></span> 3.3 / 80</td>
+                            <td id="last_update">Dec 30 2018</td>
+                            <td>
+                              <span class="label <%= app.status %>">Draft</span>
+                            </td>
+                          </tr>
+                        </a>
+                      <% } %>
+                    <% } else if(typeof apps == undefined || null) { %>
+                      <img src="/assets/images/logo/Degg_outline_dark.png" alt="Display Icon" style="opacity: .5;">
+                      <div style="opacity: 0.9; margin: 20px; text-align: center;">No item found!!</div>
+                    <% } %>
+                  </tbody>
+                </table>
+                <br>
+                <nav class="pull-right">
+                  <ul class="pagination pagination-split">
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">«</span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">»</span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+          <!-- end col -->
+        </div>
+        <% if(typeof app == "undefined" || null ) { %>
+          <!-- If Apps are not found Display this -->
+          <center>
+            <div>
+              <h1 class="mdi mdi-blur" style="opacity: .5; font-size: 200px;"></h1>
+              <div style="opacity: 0.9; margin: 20px; text-align: center;">No App found!!</div>
+            </div>
+          </center>
+        <% } %>
+        <!-- end row -->
+      </div>
+      <!-- container -->
+    </div>
+    <!-- content -->
+    <!-- Footer -->
+    <%- include("./partials/footer.html"); %>
+  </div>
+  <!-- ============================================================== -->
+  <!-- End Right content here -->
+  <!-- ============================================================== -->
+</div>
+<!-- END wrapper -->

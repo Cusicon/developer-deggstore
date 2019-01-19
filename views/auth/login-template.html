@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en" class="no-outlines">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="author" content="" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/public/assets/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="/assets/css/_style.css" />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="m-account-w" style="padding: 0px;" data-bg-img="/assets/images/account/wrapper-bg.jpg">
+        <div class="m-account">
+          <div class="row no-gutters">
+            <div class="col-md-6">
+              <div
+                class="m-account--content-w"
+                data-bg-img="/assets/images/account/content-bg.jpg"
+              >
+                <div class="m-account--content">
+                  <h2 class="h2">Don't have an account?</h2>
+                  <p>
+                    Try one!, and gain the ability to upload games to Deggstore.
+                  </p>
+                  <a href="/register" class="btn btn-rounded"
+                    >Register Now</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="m-account--form-w">
+                <div class="m-account--form">
+                  <div class="logo">
+                    <img src="/assets/images/logo/Degg_full_light.png" alt="Deggstore" style="width: 150px;" />
+                  </div>
+                  <form action="/login" method="POST">
+                    <label class="m-account--title">Login to your account</label>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <i class="fa fa-user"></i>
+                        </div>
+                        <input
+                          type="text"
+                          name="username"
+                          placeholder="Username"
+                          class="form-control"
+                          autocomplete="off"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <i class="fa fa-key"></i>
+                        </div>
+                        <input
+                          type="password"
+                          name="password"
+                          placeholder="Password"
+                          class="form-control"
+                          autocomplete="off"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="m-account--actions">
+                      <a href="#" class="btn-link">Forgot Password?</a>
+                      <button type="submit" class="btn btn-rounded btn-success">
+                        Login
+                      </button>
+                    </div>
+                    <div class="m-account--alt">
+                      <p><span>OR LOGIN WITH</span></p>
+                      <div class="btn-list">
+                        <a href="#" class="btn btn-rounded btn-info"
+                          >Facebook</a
+                        >
+                        <a href="#" class="btn btn-rounded btn-danger"
+                          >Google</a
+                        >
+                      </div>
+                    </div>
+                    <div class="m-account--footer">
+                      <p>&copy; <%= new Date().getFullYear().toString(); %> Deggstore</p>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script>
+      $("body").removeClass("enlarged");
+    </script>
+  </body>
+</html>

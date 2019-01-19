@@ -1,0 +1,78 @@
+<!-- Top Bar Start -->
+<div class="topbar">
+  <!-- LOGO -->
+  <div class="topbar-left">
+    <a href="/app/dashboard" class="logo">
+      <span style="float: left;"
+        >&nbsp;
+        <img src="/assets/images/logo/Degg_full_light.png" alt="" height="45" />
+      </span>
+      <i> <img src="/assets/images/logo/Degg.png" alt="" height="30" /> </i>
+    </a>
+  </div>
+
+  <nav class="navbar-custom" style="background: linear-gradient(#808080, #ffffff);">
+    <ul class="list-inline float-right mb-0">
+      <li class="list-inline-item dropdown notification-list">
+        <!-- Profile -->
+        <a
+          class="nav-link dropdown-toggle waves-effect waves-light nav-user"
+          data-toggle="dropdown"
+          href="#"
+          role="button"
+          aria-haspopup="false"
+          aria-expanded="false"
+        >
+          <div
+            style="margin: 20px 15px; height: 30px; width: 30px; line-height: 30px; text-align: center; margin-right: 10px; border-radius: 50%;"
+            class="text-light notify-icon bg-dark"
+          >
+            <%= user.full_name.replace(user.full_name, user.full_name.charAt(0).toUpperCase()); %>
+          </div>
+          <a href="/lock/out" class="text-light">
+            <i class="mdi mdi-power"></i> <span>Sign out</span>
+          </a>
+        </a>
+        <!-- Profile Dropdown -->
+        <div
+          class="dropdown-menu dropdown-menu-right profile-dropdown dropdown-lg"
+          aria-labelledby="Preview"
+        >
+          <!-- item -->
+          <div style="max-height: 200px; overflow: auto;">
+            <!-- item -->
+            <a
+              href="javascript: void(0);"
+              class="dropdown-item notify-item"
+            >
+              <p class="notify-details" style="margin-left: 5px;">
+                <small class="text-success pull-right" style="font-size: 20px;">&checkmark;</small>
+                <%= user.full_name %> 
+                <small class="text-muted">
+                  <%= user.company_name %>
+                </small>
+              </p>
+            </a>
+            
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <ul class="list-inline menu-left mb-0">
+      <li class="float-left">
+        <button style="background-color: transparent;" class="button-menu-mobile open-left waves-light waves-effect">
+          <i class="dripicons-menu"></i>
+        </button>
+      </li>
+      <center>
+        <li class="hide-phone app-search">
+          <form action="/app/search" method="GET" role="search" class="">
+            <input type="text" placeholder="Search..." name="s" class="form-control">
+          </form>
+        </li>
+      </center>
+    </ul>
+  </nav>
+</div>
+<!-- Top Bar End -->

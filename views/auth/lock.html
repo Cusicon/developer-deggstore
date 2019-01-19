@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en" class="no-outlines">
+  <head>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/_style.css" />
+  </head>
+
+  <body style="background-image: url(/assets/images/account/wrapper-bg.jpg);">
+    <div class="wrapper">
+      <div class="m-account-w bg--img">
+        <div class="m-account m-account-lock">
+          <div class="m-account--form-w">
+            <div class="m-account--form m-account--lock">
+              <div class="m-account--user">
+                <img src="/assets/images/logo/Degg_outline.png" alt="logo" style="border-radius: 0 !important; width: 75px;">
+              </div>
+              <form action="/lock/unlock" method="POST">
+                <div class="sr-only">
+                  <%- messages() %>
+                </div>
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <i class="fa fa-envelope"></i>
+                    </div>
+                    <input
+                      name="email"
+                      placeholder="Email"
+                      class="form-control"
+                      autocomplete="off"
+                      autofocus
+                      required
+                      type="email"
+                    />
+                  </div>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <i class="fa fa-key"></i>
+                    </div>
+                    <input
+                      name="password"
+                      placeholder="Password"
+                      class="form-control"
+                      autocomplete="off"
+                      maxlength="12"
+                      required
+                      type="password"
+                    />
+                    <input
+                      class="form-control btn-secondary"
+                      style="cursor: pointer;"
+                      value="Sign in"
+                      type="submit"
+                    />
+                  </div>
+                  <br>
+                  <div class="text-center">
+                    <a href="/register" class="text-muted ">Create an account</a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script>
+      $("body").removeClass("enlarged");
+    </script>
+  </body>
+</html>
