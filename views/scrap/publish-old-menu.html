@@ -1,0 +1,70 @@
+<!-- Menu -->
+            <div class="col-3 col-sm-3 col-md-3 card-box" style="background-color: transparent !important; border: none; border-right: 1px solid #e2e2e2;">
+              <div id="sidebar-menu" class="app_menu">
+                <!-- Left Menu Start -->
+                <ul class="metismenu" id="side-menu" style="list-style-type: none; padding: 0px; margin: 0px;">
+                  <div for="" class="col-12">Menu</div>
+                  <li>
+                    <a class="text-dark bg-light" href="/app/dashboard" class="goBack">
+                      <i class="fi-arrow-left text-success"></i>
+                      <span> Go to dashboard </span>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a class="text-dark" href="#app" data-href="/app/publish/draft/<%= app._id %>/app_packages" id="app_packages">
+                      <i class="dripicons-rocket"></i>
+                      <span> App packages </span>
+                      <span style="float: right;"><%= app.version || "none" %></span>
+                    </a>
+                  </li>
+              
+                  <li>
+                    <a class="text-dark" href="" data-href="/app/publish/draft/<%= app._id %>" id="store_listing">
+                      <i>
+                        <img src="/assets/images/logo/Degg_grey_2.png" style="width: 20px; height: 20px;" alt=""> 
+                      </i>
+                      <span> Store Listing </span>
+                    </a>
+                  </li>
+         
+                  <li>
+                    <a class="text-dark" href="#test" data-href="/app/publish/draft/<%= app._id %>/test_flight" id="test_flight">
+                      <i class="mdi mdi-test-tube"></i>
+                      <span> Test Flight </span>
+                    </a>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a class="text-dark" href="#in_app" data-href="/app/publish/draft/<%= app._id %>/in_app_purchase" id="in_app_purchase">
+                      <i class="dripicons-briefcase"></i>
+                      <span> In-App purchases </span>
+                    </a>
+                  </li>
+              
+                  <li>
+                    <a class="text-dark" href="#service" data-href="/app/publish/draft/<%= app._id %>/services" id="services">
+                      <i class="dripicons-contract"></i>
+                      <span> Services and APIs </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <br>
+            </div>
+            <div id="messages" class="sr-only">
+              <% if(typeof errors != 'undefined'){ %>
+                <% errors.forEach(err => { %>
+                  <ul class="error">
+                    <li>
+                      <%= err.msg %>
+                    </li>
+                  </ul>
+                <% }); %>
+              <% } %>
+            </div>
+            <%- messages() %>
+            
+    <!-- Footer -->
+    <%-include("../partials/footer.html"); %>

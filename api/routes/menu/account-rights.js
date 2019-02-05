@@ -1,9 +1,13 @@
 const express = require("express");
-const router = express();
+const router = express.Router();
 const title = "Account Rights";
 
 router.get("/", (req, res) => {
-    res.send(title);
+    var src = "./menu/account_rights.html";
+    res.render("./index", {
+        title: title,
+        src: src
+    });
 });
 
 

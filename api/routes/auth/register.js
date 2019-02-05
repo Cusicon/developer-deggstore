@@ -2,104 +2,126 @@ const express = require("express");
 const router = express();
 const address = require("address");
 const path = require("path");
-const title = "Register";
+const title = "Create Account";
 
 /******************** MODELS ********************/
 const Developer = require("../../models/developer");
 
 router.get("/", (req, res) => {
-  if (!req.user) {
-    console.log("\nRouting register UI...");
-    res.render("./auth/register", { title: title });
-  } else {
-    res.redirect("/app/dashboard");
-  }
+	if (!req.user) {
+		console.log("\nRouting register UI...");
+		res.render("./auth/register", { title: title });
+	} else {
+		res.redirect("/app/dashboard");
+	}
 });
 
 router.post("/", (req, res) => {
-  if (!req.user) {
-    console.log("Creating account...");
+	if (!req.user) {
+		console.log("Creating account...");
 
-    // Assigning variable to form inputs
-    var mac = address.mac((err, addr) => {
-      return addr;
-    });
-    var ip = address.ip();
-    var full_name = req.body.full_name;
-    var email = req.body.email;
-    var password = req.body.password;
-    var company_name = req.body.company_name;
-    var agree_terms = req.body.agree_terms;
+		// Assigning variable to form inputs
+		var mac = address.mac((err, addr) => {
+			return addr;
+		});
+		var ip = address.ip();
+		var developer_name = req.body.developer_name;
+		var email = req.body.email;
+		var website = req.body.website;
+		var phone_no = req.body.phone_no;
+		var password = req.body.password;
+		var agree_terms = req.body.agree_terms;
+		var want_new_tips = req.body.want_new_tips;
+		var will_give_feedback = req.body.will_give_feedback;
 
-    // Form validation
-    req.checkBody("full_name", "Full name is required!.").notEmpty();
-    req
-      .checkBody("email", "Email is required!.")
-      .isEmail()
-      .notEmpty();
-    req.checkBody("password", "Password is required!.").notEmpty();
-    req
-      .checkBody("con_password", "Passwords don't match!.")
-      .equals(req.body.password)
-      .notEmpty();
-    req.checkBody("company_name", "Company's name is required!.").notEmpty();
+		// Form validation
+		req.checkBody("developer_name", "Developer name is required!.").notEmpty();
+		req.checkBody("email", "Email is required!.").isEmail();
+		req
+			.checkBody("con_email", "Emails don't match!.")
+			.isEmail()
+			.equals(email);
+		req
+			.checkBody("phone_no", "Phone number is required and must be a number!.")
+			.isNumeric()
+			.notEmpty();
+		req.checkBody("password", "Password is required!.").notEmpty();
+		req.checkBody("con_password", "Passwords don't match!.").equals(password);
+		req
+			.checkBody(
+				"agree_terms",
+				"Please agree to the Degg Store Developer Station distribution agreement to continue!."
+			)
+			.notEmpty();
 
-    // Generate Access Expiry_date
-    function generate_access_expiry() {
-      // Present Dates
-      var presentYear = new Date().getFullYear();
-      var presentMonth = new Date().getMonth();
-      var presentDate = new Date().getDate();
+		// Generate Access Expiry_date
+		function generate_access_expiry() {
+			// Present Dates
+			var presentYear = new Date().getFullYear();
+			var presentMonth = new Date().getMonth();
+			var presentDate = new Date().getDate();
 
-      // Expiry Dates
-      var expiryYear = ++presentYear;
-      var expiryMonth = presentMonth;
-      var expiryDate = --presentDate;
+			// Expiry Dates
+			var expiryYear = ++presentYear;
+			var expiryMonth = presentMonth;
+			var expiryDate = --presentDate;
 
-      var result = new Date(expiryYear, expiryMonth, expiryDate).toDateString();
-      return result;
-    }
+			var result = new Date(expiryYear, expiryMonth, expiryDate).toString();
+			return result;
+		}
 
-    // Check for Validation Errors
-    var errors = req.validationErrors();
+		// Check for Validation Errors
+		var errors = req.validationErrors();
 
-    if (errors) {
-      console.log(`Errors Incoming...`);
-      console.log(`Errors: ${errors}`);
-      res.render("./auth/register", { title: title, errors: errors });
-    } else {
-      var newDeveloper = new Developer({
-        ip: ip,
-        mac: mac,
-        full_name: full_name,
-        email: email.toLowerCase(),
-        password: password,
-        company_name: company_name,
-        has_access: true,
-        access_expiry: generate_access_expiry(),
-        date_created: new Date().toDateString(),
-        agree_terms: agree_terms,
-        linked_account: [],
-        page: {},
-        account_details: {},
-        notifications: {}
-      });
+		if (errors) {
+			console.log(`Errors Incoming...`);
+			console.log(`Errors: ${errors}`);
+			res.render("./auth/register", { title: title, errors: errors });
+		} else {
+			var newDeveloper = new Developer({
+				ip: ip,
+				mac: mac,
+				developer_name: developer_name,
+				email: email.toLowerCase(),
+				website: website,
+				phone_no: phone_no,
+				password: password,
+				agree_terms: agree_terms,
+				want_new_tips: want_new_tips,
+				will_give_feedback: will_give_feedback,
+				date_joined: new Date().toString(),
+				has_access: true,
+				access_expiry: generate_access_expiry()
+			});
 
-      Developer.createDeveloper(newDeveloper, (err, developer) => {
-        if (err) {
-          console.log(`Error ${err}`);
-        } else {
-          var message = `Account created!`;
-          console.log(message);
-          req.flash("success", message);
-          res.location("/lock");
-          res.redirect("/lock");
-        }
-      });
-    }
-  } else {
-    res.redirect("/app/dashboard");
-  }
+			Developer.getDevByEmail(email, (err, developer) => {
+				if (err) {
+					console.log(err);
+				} else {
+					if (developer) {
+						var message = `${email} already exist!.`;
+						req.flash("error", message);
+						res.location("/register");
+						res.redirect("/register");
+					} else {
+						Developer.createDeveloper(newDeveloper, (err, developer) => {
+							if (err) {
+								console.log(`Error ${err}`);
+							} else {
+								var message = `Account created!`;
+								console.log(message);
+								req.flash("success", message);
+								res.location("/lock");
+								res.redirect("/lock");
+							}
+						});
+					}
+				}
+			});
+		}
+	} else {
+		res.redirect("/app/dashboard");
+	}
 });
 
 module.exports = router;

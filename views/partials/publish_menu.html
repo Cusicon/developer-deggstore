@@ -1,0 +1,123 @@
+<!-- ========== Left Sidebar Start ========== -->
+<div class="left side-menu">
+    <div class="slimscroll-menu" id="remove-scroll">
+        <!-- - Sidemenu -->
+        <div id="sidebar-menu">
+            <!-- Left Menu Start -->
+            <ul class="metismenu" id="side-menu">
+                <li>
+                    <a href="javascript: void(0);" class="goBack" style="border-bottom: 1px solid #2e2e2e;">
+                        <i class="mdi mdi-arrow-left text-light"></i>
+                        <span> All applications </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/app/publish/<%= app._id %>/dashboard" data-href="/app/publish/
+                    <%= app._id %>">
+                        <i class="mdi mdi-view-dashboard"></i>
+                        <span> Dashboard </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/app/publish/<%= app._id %>/statistics" data-href="/app/publish/
+                    <%= app._id %>/statistics">
+                        <i class="mdi mdi-chart-bar"></i>
+                        <span> Statistics </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);">
+                        <i class="mdi mdi-television-guide"></i>
+                        <span> Dev Tools </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="/app/publish/<%= app._id %>/crashes" data-href="/app/publish/<%= app._id %>/crashes">Crashes & ANRs</a></li>
+                        <li><a href="/app/publish/<%= app._id %>/services" data-href="/app/publish/<%= app._id %>/services">Services & APIs</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);">
+                        <i class="mdi mdi-rocket"></i>
+                        <span> Releases </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="/app/publish/<%= app._id %>/package" data-href="/app/publish/<%= app._id %>/package">Package releases</a></li>
+                        <li><a href="/app/publish/<%= app._id %>/testflight" data-href="/app/publish/<%= app._id %>/testflight">Test flight</a></li>
+                        <li><a href="/app/publish/<%= app._id %>/artifacts" data-href="/app/publish/<%= app._id %>/artifacts">Artifacts library</a></li>
+                        <li><a href="/app/publish/<%= app._id %>/pre_launch" data-href="/app/publish/<%= app._id %>/pre_launch">Pre-launch report</a></li>
+                    </ul>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);">
+                        <i>
+                            <img src="/assets/images/logo/Degg_grey_1.png" style="width: 20px; height: 20px;" alt="">
+                        </i>
+                        <span> Store presence </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="/app/publish/<%= app._id %>/storelisting" data-href="/app/publish/<%= app._id %>/storelisting">Store listing</a></li>
+                        <li><a href="/app/publish/<%= app._id %>/storelisting_exp" data-href="/app/publish/<%= app._id %>/storelisting_exp">Store listing experiments</a></li>
+                        <li><a href="/app/publish/<%= app._id %>/in_app_products" data-href="/app/publish/<%= app._id %>/in_app_products">In-app products</a></li>
+                        <li><a href="/app/publish/<%= app._id %>/sales" data-href="/app/publish/<%= app._id %>/sales">Sales</a></li>
+                    </ul>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="javascript: void(0);">
+                        <i class="mdi mdi-account-location"></i>
+                        <span> User acquisition </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="/app/publish/<%= app._id %>/acquisition" data-href="/app/publish/<%= app._id %>/acquisition">Acquisition reports</a></li>
+                        <li><a href="/app/publish/<%= app._id %>/adwords_campaigns" data-href="/app/publish/<%= app._id %>/adwords_campaigns">Adwords campaigns</a></li>
+                        <li><a href="/app/publish/<%= app._id %>/promotions" data-href="/app/publish/<%= app._id %>/promotions">Promotions</a></li>
+                        <li><a href="/app/publish/<%= app._id %>/optimization_tips" data-href="/app/publish/<%= app._id %>/optimazation_tips">Optimazation tips</a></li>
+                    </ul>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="javascript: void(0);">
+                        <i class="mdi mdi-square-inc-cash"></i>
+                        <span> Financial reports </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="/app/publish/<%= app._id %>/total_revenue" data-href="/app/publish/
+                        <%= app._id %>/total_revenue">Total revenue</a></li>
+                    </ul>
+                    </a>
+                </li>
+                                
+                <li>
+                    <a href="javascript: void(0);">
+                        <i class="mdi mdi-comment-processing-outline"></i>
+                        <span> User feedback </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="/app/publish/<%= app._id %>/ratings" data-href="/app/publish/<%= app._id %>/ratings">Ratings</a></li>
+                        <li><a href="/app/publish/<%= app._id %>/reviews_analysis" data-href="/app/publish/<%= app._id %>/reviews_analysis">Reviews analysis</a></li>
+                        <li><a href="/app/publish/<%= app._id %>/reviews" data-href="/app/publish/<%= app._id %>/reviews">Reviews</a></li>
+                        <li><a href="/app/publish/<%= app._id %>/beta_feedback" data-href="/app/publish/<%= app._id %>/beta_feedback">Beta feedback</a></li>
+                    </ul>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- Sidebar -->
+        <div class="clearfix"></div>
+    </div>
+    <!-- Sidebar -left -->
+</div>
+<!-- Left Sidebar End -->

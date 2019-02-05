@@ -1,0 +1,54 @@
+<!-- Begin page -->
+<div id="wrapper">
+	<%- include("./partials/publish_header.html"); %> 
+	<%- include("./partials/publish_menu.html"); %>
+	<% var developer = `${app.developer}`; %>
+	<% if(!developer.includes(user.id)){ %>
+		<script>location.href = "/app/dashboard";</script>
+	<% } %>
+	<!-- ============================================================== -->
+	<!-- Start right Content here -->
+	<!-- ============================================================== -->
+	<div class="content-page">
+		<!-- Start content -->
+		<div class="content">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12">
+						<div
+							class="card-box"
+							style="border: transparent; background-color: transparent; box-shadow: none;"
+						>
+							<div id="messages" class="sr-only">
+								<% if(typeof errors != 'undefined'){ %> <% errors.forEach(err =>
+								{ %>
+								<ul class="error">
+									<li><%= err.msg %></li>
+								</ul>
+								<% }); %> <% } %>
+							</div>
+							<%- messages() %>
+							<div class="row" id="Body" style="margin: 25px 50px;">
+                <% if(typeof app != 'undefined'){ %> 
+									
+								  <!-- Body Content will be here -->
+                  <%- include(src); %> 
+                <% } %>
+							</div>
+						</div>
+					</div>
+					<!-- end col -->
+				</div>
+				<!-- end row -->
+			</div>
+			<!-- container -->
+		</div>
+		<!-- content -->
+		<!-- Footer -->
+		<%- include("./partials/footer.html"); %>
+	</div>
+	<!-- ============================================================== -->
+	<!-- End Right content here -->
+	<!-- ============================================================== -->
+</div>
+<!-- END wrapper -->

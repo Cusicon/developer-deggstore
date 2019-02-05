@@ -1,0 +1,71 @@
+<div class="row">
+	<div class="col-12">
+		<style>
+			#create:hover,
+			#create:active,
+			#create:any-link,
+			#create:focus{
+        background-color: transparent !important;
+        border: none !important;
+      }
+    </style>
+
+		<div class="page-title-box" style="background: transparent; border: none;">
+			<a href="javascript: void(0);" style="padding: 2px 8px !important;" id="create" class="text-dark pull-right"
+			 data-toggle="modal" data-target="#createGameModal">
+				<b class="fi-marquee-plus" style="font-size: 25px;"></b>
+			</a>
+			<!-- New Game Modal -->
+			<div class="modal fade" id="createGameModal" tabindex="-1" role="dialog" aria-labelledby="createGameModal" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title mt-0">New Game</h5>
+						</div>
+						<div class="modal-body">
+							<div class="form-group">
+								<form action="/app/publish/draft" method="POST">
+									<b>Default language <b class="text-danger">*</b></b><br>
+									<select name="default_language" id="default_language" style="border: 1px solid #dddddd;" class="btn btn-sm w-md waves-effect waves-light"
+									 required>
+										<option value="English-US">English (United States)</option>
+										<option value="English-BR">English (Bristish)</option>
+									</select>
+									<br><br>
+									<b>Title <b class="text-danger">*</b></b><br>
+									<input type="text" name="app_title" id="app_title" class="form-control" maxlength="50" autocomplete="off"
+									 required />
+									<p> 30 characters only. </p>
+									<!-- Error Messages -->
+									<%- messages() %>
+									<div class="float-right">
+										<input type="submit" name="createBtn" id="createBtn" style="cursor: no-drop; opacity: 0.2;" disabled value="Create"
+										 class="btn btn-success" />
+										<input type="button" name="cancelBtn" id="cancelBtn" value="Cancel" class="btn btn-default" data-dismiss="modal" />
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- End of New Game Modal -->
+		</div>
+	</div>
+</div>
+<!-- end row -->
+
+<div class="row">
+	<div class="col-12">
+		<div class="card-box" style="border: transparent; background-color: transparent; box-shadow: none;">
+			<div class="row">
+				<%= title %>
+			</div>
+			<!-- end row -->
+		</div>
+		<!-- container -->
+	</div>
+	<!-- content -->
+</div>

@@ -1,78 +1,163 @@
 <!-- Top Bar Start -->
 <div class="topbar">
-  <!-- LOGO -->
-  <div class="topbar-left">
-    <a href="/app/dashboard" class="logo">
-      <span style="float: left;"
-        >&nbsp;
-        <img src="/assets/images/logo/Degg_full_light.png" alt="" height="45" />
-      </span>
-      <i> <img src="/assets/images/logo/Degg.png" alt="" height="30" /> </i>
-    </a>
-  </div>
+	<!-- LOGO -->
+	<div class="topbar-left">
+		<a href="javascript: void(0);" class="logo">
+			<span style="float: left;"
+				>&nbsp;
+				<img src="/assets/images/logo/Degg_bw.png" alt="" height="45" />
+				<span class="text-muted" style="font-weight: lighter; font-size: 15px;"
+					>Degg Station</span
+				>
+			</span>
+			<i> <img src="/assets/images/logo/Degg_bw.png" alt="" height="30" /> </i>
+		</a>
+	</div>
 
-  <nav class="navbar-custom" style="background: linear-gradient(#808080, #ffffff);">
-    <ul class="list-inline float-right mb-0">
-      <li class="list-inline-item dropdown notification-list">
-        <!-- Profile -->
-        <a
-          class="nav-link dropdown-toggle waves-effect waves-light nav-user"
-          data-toggle="dropdown"
-          href="#"
-          role="button"
-          aria-haspopup="false"
-          aria-expanded="false"
-        >
-          <div
-            style="margin: 20px 15px; height: 30px; width: 30px; line-height: 30px; text-align: center; margin-right: 10px; border-radius: 50%;"
-            class="text-light notify-icon bg-dark"
-          >
-            <%= user.full_name.replace(user.full_name, user.full_name.charAt(0).toUpperCase()); %>
-          </div>
-          <a href="/lock/out" class="text-light">
-            <i class="mdi mdi-power"></i> <span>Sign out</span>
-          </a>
-        </a>
-        <!-- Profile Dropdown -->
-        <div
-          class="dropdown-menu dropdown-menu-right profile-dropdown dropdown-lg"
-          aria-labelledby="Preview"
-        >
-          <!-- item -->
-          <div style="max-height: 200px; overflow: auto;">
-            <!-- item -->
-            <a
-              href="javascript: void(0);"
-              class="dropdown-item notify-item"
-            >
-              <p class="notify-details" style="margin-left: 5px;">
-                <small class="text-success pull-right" style="font-size: 20px;">&checkmark;</small>
-                <%= user.full_name %> 
-                <small class="text-muted">
-                  <%= user.company_name %>
-                </small>
-              </p>
-            </a>
-            
-          </div>
-        </div>
-      </li>
-    </ul>
+	<nav
+		class="navbar-custom"
+		style="background: linear-gradient(#eeeeee, #ededed); border-bottom: 1px solid #dedede;"
+	>
+		<ul class="list-inline float-right mb-0">
+			<li class="list-inline-item dropdown notification-list">
+				<a
+					class="nav-link dropdown-toggle arrow-none waves-light waves-effect"
+					data-toggle="dropdown"
+					href="#"
+					role="button"
+					aria-haspopup="false"
+					aria-expanded="true"
+				>
+					<i class="dripicons-bell noti-icon"></i>
+					<span class="badge badge-danger noti-icon-badge">4</span>
+				</a>
+				<div
+					class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-lg"
+					aria-labelledby="Preview"
+					x-placement="bottom-end"
+					style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-214px, 72px, 0px); border: none; box-shadow: 0px 1px 2px #0000003a;"
+				>
+					<!-- item-->
+					<div
+						class="dropdown-item noti-title"
+						style="background-color: #343c49;"
+					>
+						<h5>Notification</h5>
+					</div>
 
-    <ul class="list-inline menu-left mb-0">
-      <li class="float-left">
-        <button style="background-color: transparent;" class="button-menu-mobile open-left waves-light waves-effect">
-          <i class="dripicons-menu"></i>
-        </button>
-      </li>
-      <center>
-        <li class="hide-phone app-search">
-          <form action="/app/search" method="GET" role="search" class="">
-            <input type="text" placeholder="Search..." name="s" class="form-control">
-          </form>
-        </li>
-      </center>
-    </ul>
-  </nav>
+					<!-- item-->
+					<a href="javascript:void(0);" class="dropdown-item notify-item">
+						<div class="notify-icon bg-success">
+							<i class="icon-bubble"></i>
+						</div>
+						<p class="notify-details">
+							Robert S. Taylor commented on Admin<small class="text-muted"
+								>1 min ago</small
+							>
+						</p>
+					</a>
+
+					<!-- item-->
+					<a href="javascript:void(0);" class="dropdown-item notify-item">
+						<div class="notify-icon bg-info"><i class="icon-user"></i></div>
+						<p class="notify-details">
+							New user registered.<small class="text-muted">1 min ago</small>
+						</p>
+					</a>
+
+					<!-- item-->
+					<a href="javascript:void(0);" class="dropdown-item notify-item">
+						<div class="notify-icon bg-danger"><i class="icon-like"></i></div>
+						<p class="notify-details">
+							Carlos Crouch liked <b>Admin</b
+							><small class="text-muted">1 min ago</small>
+						</p>
+					</a>
+
+					<!-- All-->
+					<a
+						href="javascript:void(0);"
+						class="dropdown-item notify-item"
+					>
+						View All
+					</a>
+				</div>
+			</li>
+			<li class="list-inline-item dropdown notification-list">
+				<!-- Profile -->
+				<a
+					class="nav-link dropdown-toggle waves-effect waves-light nav-user"
+					data-toggle="dropdown"
+					href="#"
+					role="button"
+					aria-haspopup="false"
+					aria-expanded="false"
+				>
+					<div
+						style="background-color: #343c49; margin: 20px 15px; height: 30px; width: 30px; line-height: 30px; text-align: center; margin-right: 10px; border-radius: 50%;"
+						class="text-light notify-icon"
+						title="Signed in as <%= user.developer_name %>"
+					>
+						<%= user.developer_name.replace(user.developer_name,
+						user.developer_name.charAt(0).toUpperCase()); %>
+					</div>
+				</a>
+				<div
+					class="dropdown-menu dropdown-menu-right profile-dropdown dropdown-lg"
+					aria-labelledby="Preview"
+					x-placement="bottom-end"
+					style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-110px, 70px, 0px); border: 0px; box-shadow: 0px 1px 2px #0000003a;"
+				>
+					<!-- item-->
+					<div
+						class="dropdown-item noti-title"
+						style="background-color: #343c49; height: 70px; padding-top: 40px; border-radius: 0px;"
+						title="<%= user.developer_name %>"
+					>
+						<div
+							style="background-color: #343c49; float: left; height: 50px; width: 50px; line-height: 45px; text-align: center; font-size: 20px; border-radius: 50%; border: 2px solid #ffffff;"
+							class="text-light notify-icon"
+						>
+							<%= user.developer_name.replace(user.developer_name,
+							user.developer_name.charAt(0).toUpperCase()); %>
+						</div>
+						<div style="display: inline-block; vertical-align: middle; padding: 0px 5px; color: #eeeeee;"><%= user.developer_name %></div>
+						<div class="text-muted" style="font-size: 80%; vertical-align: middle; padding: 0px 15px;"><%= user.email %></div>
+					</div>
+					<br><br>
+					<!-- item-->
+					<a href="/lock/out" class="dropdown-item notify-item">
+						<i class="mdi mdi-power"></i> <span>Sign out</span>
+					</a>
+				</div>
+			</li>
+		</ul>
+
+		<ul class="list-inline menu-left mb-0">
+			<li class="float-left">
+				<button
+					style="background-color: transparent;"
+					class="button-menu-mobile open-left waves-light waves-effect"
+				>
+					<i class="dripicons-menu"></i>
+				</button>
+			</li>
+			<center>
+				<li class="hide-phone app-search">
+					<% var arrTitle = title.split("::"); %>
+					<span style="font-weight: lighter; float: left; font-size: 20px;">
+						<%= title.replace(title, arrTitle[0]) %></span>
+					<form action="/app/search" method="GET" role="search" class="">
+						<input
+							type="text"
+							placeholder="Search your apps..."
+							name="s"
+							class="form-control"
+						/>
+					</form>
+				</li>
+			</center>
+		</ul>
+	</nav>
 </div>
 <!-- Top Bar End -->

@@ -1,0 +1,654 @@
+<!-- Store Listing -->
+<form action="/app/publish/draft/<%= app._id %>/save" enctype="multipart/form-data" id="StoreListing" class="card-box col-12" style="background-color: #ffffff;" method="POST">
+    <div id="StoreListingCon">
+        <!-- Languages -->
+        <select name="default_language" id="default_language" style="border: 1px solid #dddddd;" class="btn btn-sm w-md waves-effect waves-light pull-right"
+            >
+            <option value="<%= app.default_language %>" selected><%= app.default_language %></option>
+        </select>
+
+        <!-- App information-->
+        <h4 class="m-t-0" style="font-weight: lighter; text-transform: unset !important;">App information</h4>
+        <br>
+        <div class="app_infomation" style="border-bottom: 1px solid #eeeeee;">
+            <!-- Title -->
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="col-4">
+                        <label for="app_title" class="text-dark" style="font-weight: bold;">Title <b class="text-danger">*</b></label>
+                        <p>
+                            Default - <b><%= app.default_language %></b>
+                            <br>
+                            50 characters only.
+                        </p>
+                    </div>
+                    <input type="text" name="app_title" id="app_title" maxlength="50" class="form-control" value="<%= app.app_title %>">
+                </div>
+            </div>
+
+            <!-- Short Description -->
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="col-4">
+                        <label for="app_short_desc" class="text-dark" style="font-weight: bold;">Short description <b
+                                class="text-danger">*</b></label>
+                        <p>
+                            Default - <b><%= app.default_language %></b>
+                            <br>
+                            100 characters only.
+                        </p>
+                    </div>
+                    <textarea name="app_short_desc" id="app_short_desc" maxlength="100" class="form-control" ></textarea>
+                </div>
+            </div>
+
+            <!-- Long Description -->
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="col-4">
+                        <label for="app_long_desc" class="text-dark" style="font-weight: bold;">Long description <b
+                                class="text-danger">*</b></label>
+                        <p>
+                            Default - <b><%= app.default_language %></b>
+                            <br>
+                            3000 characters only.
+                        </p>
+                    </div>
+                    <textarea name="app_long_desc" id="app_long_desc" maxlength="3000" style="height: 250px;" class="form-control"
+                        ></textarea>
+                </div>
+            </div>
+            <!-- Keywords -->
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="col-4">
+                        <label class="text-dark" style="font-weight: bold;">Keywords <b class="text-danger">*</b></label>
+                        <p>
+                            Default - <b><%= app.default_language %></b>
+                            <br>
+                            <br>
+                        </p>
+                    </div>
+                    <input type="text" name="app_keywords" id="app_keywords" style="border: 1px solid #dddddd;" class="form-control"
+                        placeholder="seperate words by ','">
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <!-- Graphics Content -->
+        <h4 class="m-t-0" style="font-weight: lighter; text-transform: unset !important;">Graphics Content</h4>
+        <br>
+        <div class="graphics_content" style="border-bottom: 1px solid #eeeeee;">
+            <!-- Snapshots -->
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="col-4">
+                        <label style="font-weight: bold;" class="">Snapshots <b class="text-danger">*</b></label> (4 Snapshots only)
+                        <p>
+                            Default - <b><%= app.default_language %></b>
+                            <br>
+                            <b>32-bits PNG</b> or <b>JPG.</b> <br>
+                            Max: 5MB <br>
+                            <small><b>W: 400px x H: 200px</b></small>
+                        </p>
+                    </div>
+                </div>
+                <div class="app_snapshots">
+                    <div class="card-box">
+                        <div class="row" style="display: flex;">
+                            <img src="/assets/images/companies/intel.png" id="app_snapshot_img" style="background-color: transparent; border: 1px solid #eeeeee; margin: 10px 0; max-height: 140px; max-width: 200px;"
+                                alt="Snapshot">
+                            <div class="col-2 col-md-2 col-sm-2" style="height: 140px; margin: 10px; border: 1px solid #eeeeee; overflow: hidden; background-image: url(/assets/images/icon_add.png);">
+                            <input type="file" name="app_snapshot" id="app_snapshot" style="position: absolute; opacity: 0; width: 100%; height: 200px; top: 0; left: 0;"
+                                accept="image/*" multiple>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <!-- icon & promo -->
+            <div class="icon_&_feature" style="margin-bottom: 5px;">
+                <div class="form-group">
+                    <!-- Labels -->
+                    <div class="row">
+                        <div class="input-group">
+                            <!-- Hi-res Label -->
+                            <div class="col-4 col-md-4 col-sm-4">
+                                <label style="font-weight: bold;" class="">HI-res Icon <b class="text-danger">*</b></label>
+                                <p>
+                                    Default - <b><%= app.default_language %></b>
+                                    <br>
+                                    <b>32-bits PNG.</b> <br>
+                                    Max: 5MB <br>
+                                    <small><b>W: 200px x H: 200px</b></small>
+                                </p>
+                            </div>
+
+                            <!-- Promo Graphic Label -->
+                            <!-- <div class="col-4 col-md-4 col-sm-4">
+                                <label style="font-weight: bold;" class="">Promo Graphic</label>
+                                <p>
+                                    Default - <b><%= app.default_language %></b>
+                                    <br>
+                                    <b>24-bits PNG</b> or <b>JPG</b>. <br>
+                                    Max: 5MB <br>
+                                    <small><b>W: 400px x H: 200px</b></small>
+                                </p>
+                            </div> -->
+                            
+                            <!-- Promo Video Label -->
+                            <div class="col-8 col-md-8 col-sm-8">
+                                <label style="font-weight: bold;" class="">Promo Video</label>
+                                <p>
+                                    Default - <b><%= app.default_language %></b>
+                                    <br>
+                                    YouTube video <br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Inputs -->
+                    <div class="row">
+                        <!-- HI-res Icon -->
+                        <div class="col-2 col-md-2 col-sm-2" style="overflow: hidden;">
+                            <img src="/assets/images/icon_add.png" id="app_icon_img" style="border-radius: 10px; border: 1px solid #eeeeee; margin: 5px 0; max-height: 140px; height: 100%;"
+                                alt="App icon">
+                            <input type="file" name="app_icon" id="app_icon" style="position: absolute; opacity: 0; width: 100%; height: 200px; top: 0; left: 0;"
+                                accept="image/*">
+                        </div>
+
+                        <!-- Divider Between HI-res and Promo Graphic -->
+                        <div class="col-2 col-md-2 col-sm-2"></div>
+
+                        <!-- Promo Graphic -->
+                        <!-- <div class="col-4 col-md-4 col-sm-4" style="overflow: hidden;">
+                            <img src="/assets/images/snapshots_add.png" id="app_promo_img" style="border: 1px solid #eeeeee; margin: 5px 0; max-height: 140px; height: 100%;"
+                                alt="Promo Graphic">
+                            <input type="file" name="app_promo" id="app_promo" style="position: absolute; opacity: 0; width: 100%; height: 200px; top: 0; left: 0;"
+                                accept="image/*">
+                        </div> -->
+                        
+                        <!-- Promo Video (YouTube) -->
+                        <div class="col-8 col-md-8 col-sm-8" style="overflow: hidden;">
+                            <input type="url" name="app_promo_video" id="app_promo_video" class="form-control"
+                                placeholder="https://">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <!-- Categorization -->
+        <h4 class="m-t-0" style="font-weight: lighter; text-transform: unset !important;">Categorization</h4>
+        <br>
+        
+        <div class="categorization" style="border-bottom: 1px solid #eeeeee;">
+            <!-- Application type -->
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="col-4">
+                        <label class="text-dark" style="font-weight: bold;">Application type <b class="text-danger">*</b></label>
+                        <p>
+                            Default - <b><%= app.default_language %></b>
+                            <br>
+                        </p>
+                    </div>
+                    <select name="app_type" id="app_type" style="border: 1px solid #dddddd;" class="form-control w-md waves-effect waves-light">
+                        <option label="Choose a type"></option>
+                        <option value="application" id="application">Application</option>
+                        <option value="game" id="game">Game</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Category -->
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="col-4">
+                        <label class="text-dark" style="font-weight: bold;">Category <b class="text-danger">*</b></label>
+                        <p>
+                            Default - <b><%= app.default_language %></b>
+                            <br>
+                        </p>
+                    </div>
+                    <select name="app_category" id="app_category" style="border: 1px solid #dddddd;" class="form-control w-md waves-effect waves-light">
+                        <option label="Choose a category"></option>
+                    </select>
+                </div>
+            </div>
+            <!-- Content rating -->
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="col-4">
+                        <label class="text-dark" style="font-weight: bold;">Content Rating <b class="text-danger">*</b></label>
+                    </div>
+                    <p>
+                        You need to go through a rating questionnaire and apply for content rating. <a href="javascript: void(0);"
+                         data-toggle="modal" data-target="#ContentRatingModal" class="text-success">Edit</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <!-- Pricing and Distribution -->
+        <h4 class="m-t-0" style="font-weight: lighter; text-transform: unset !important;">Pricing and Distribution</h4>
+        <br>
+
+        <div class="pricing" style="border-bottom: 1px solid #eeeeee;">
+            <!-- Pricing -->
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="col-4">
+                        <label class="text-dark" style="font-weight: bold;">Pricing Schedule <b class="text-danger">*</b></label>
+                        <p>
+                            Default - <b><%= app.default_language %></b>
+                            <br>
+                        </p>
+                    </div>
+                    <select name="app_price" id="app_price" style="border: 1px solid #dddddd;" class="form-control w-md waves-effect waves-light">
+                        <option value="none">Choose one</option>
+                        <option value="free"> Free </option>
+                        <option value="USD1"> USD 1 </option>
+                        <option value="USD2"> USD 2 </option>
+                        <option value="USD5"> USD 5 </option>
+                        <option value="USD10"> USD 10 </option>
+                        <option value="USD20"> USD 20 </option>
+                        <option value="USD30"> USD 30 </option>
+                        <option value="USD40"> USD 40 </option>
+                        <option value="USD50"> USD 50 </option>
+                        <option value="USD100"> USD 100 </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <div class="row" style="border-bottom: 1px solid #eeeeee; padding-bottom: 15px;">
+            <!-- Contact Details -->
+            <div class="col-6" style="border-right: 1px solid #eeeeee;">
+                <h4 class="m-t-0" style="font-weight: lighter; text-transform: unset !important;">Contact Details</h4>
+                <br>
+                <div class="contact_details">
+                    <!-- Website -->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="col-4">
+                                <label class="text-dark" style="font-weight: bold;">Website</label>
+                            </div>
+                            <input type="url" name="website" id="website" class="form-control" placeholder="https://">
+                        </div>
+                    </div>
+                    <!-- Email -->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="col-4">
+                                <label class="text-dark" style="font-weight: bold;">Email <b class="text-danger">*</b></label>
+                            </div>
+                            <input type="email" name="email" id="email" class="form-control">
+                        </div>
+                    </div>
+                    <!-- Phone -->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="col-4">
+                                <label class="text-dark" style="font-weight: bold;">Phone</label>
+                            </div>
+                            <input type="tel" name="phone" id="phone" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <!-- App Review Information -->
+            <div class="col-6">
+                <h4 class="m-t-0" style="font-weight: lighter; text-transform: unset !important;">App Review Information <b class="text-danger">*</b><br>
+                    <p style="font-size: 12px; font-weight: 500;">This information will not be displayed in the Degg store.</p>
+                </h4>
+                <br>
+                <div class="app_review_info">
+                    <!-- Review Contact Information -->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="col-6">
+                                <input type="text" name="review_first_name" id="review_first_name" class="form-control" placeholder="First name">
+                            </div>
+                            <div class="col-6">
+                                <input type="text" name="review_last_name" id="review_last_name" class="form-control" placeholder="Last name">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <div class="col-6">
+                                <input type="tel" name="review_phone_no" id="review_phone_no" class="form-control" placeholder="Phone number">
+                            </div>
+                            <div class="col-6">
+                                <input type="email" name="review_email" id="review_email" class="form-control" placeholder="Email">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+        <br>
+
+        <!-- Privacy Policy -->
+        <h4 class="m-t-0" style="font-weight: lighter; text-transform: unset !important;">Privacy Policy</h4>
+        <p style="font-size: 12px;">if you wish to provide a privacy policy URL for the application, please enter it below, 
+            else leave it empty. Also, please check out our <a href="/user_data_policy" target="_blank">User Data Policy</a> 
+            to avoid common violation.
+        </p>
+        <br>
+        <div class="privacy_policy">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="col-4">
+                        <label class="text-dark" style="font-weight: bold;">Privacy Policy</label>
+                    </div>
+                    <input type="url" name="privacy" id="privacy_policy" class="form-control pull-right" placeholder="https://"><br>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+</form>
+<div class="col-12">
+    <button type="submit" name="saveDraftBtn" id="saveDraftBtn" form="StoreListing" formaction="/app/publish/draft/<%= app._id %>/save"
+        class="btn btn-md btn-success waves-effect waves-light pull-right">
+        <span>Save Draft</span>
+    </button>
+    <% if(app.status.includes("published") == false) { %>
+    <button id="submitReviewBtn" disabled style="opacity: 0.2; cursor: no-drop; margin: 0 10px" class="btn btn-md btn-secondary btn-muted btn-success waves-effect waves-light pull-right">
+        <span>Submit for Review</span>
+    </button>
+    <% } %>
+    <br><br><br>
+</div>
+
+<!-- Content Rating Modal -->
+<div class="modal fade" id="ContentRatingModal" role="dialog" aria-labelledby="ContentRatingModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0">Welcome to Content Rating</h5>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <p class="text-muted">For each content rating, select the level of Frequency that best describes
+                        your app. The app rating
+                        that will display on the Degg Store is the same across all of your platforms. it is based on
+                        the
+                        app's platform with the highest rating.
+                    </p>
+
+                    <br><br>
+                    <form action="/app/publish/draft/<%= app._id %>/calculateRating" id="ContentRating" method="POST">
+                        <div class="table table-responsive">
+                            <table class="table m-b-0">
+                                <thead>
+                                    <tr>
+                                        <th>Content Description</th>
+                                        <th>None</th>
+                                        <th>Infrequent</th>
+                                        <th>Frequent</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <label>Cartoon or Fantasy Violence</label>
+                                        </td>
+                                        <td id="none1">
+                                            <input type="radio" name="rating1" id="none1">
+                                        </td>
+                                        </td>
+                                        <td id="infr1">
+                                            <input type="radio" name="rating1" id="infr1">
+                                        </td>
+                                        </td>
+                                        <td id="fr1">
+                                            <input type="radio" name="rating1" id="fr1">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Cartoon or Fantasy Violence</label>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating2" id="none2">
+                                        </td>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating2" id="infr2">
+                                        </td>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating2" id="fr2">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Cartoon or Fantasy Violence</label>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating3" id="none3">
+                                        </td>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating3" id="infr3">
+                                        </td>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating3" id="fr3">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Cartoon or Fantasy Violence</label>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating4" id="none4">
+                                        </td>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating4" id="infr4">
+                                        </td>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating4" id="fr4">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Cartoon or Fantasy Violence</label>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating5" id="none5">
+                                        </td>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating5" id="infr5">
+                                        </td>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating5" id="fr5">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Cartoon or Fantasy Violence</label>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating6" id="none6">
+                                        </td>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating6" id="infr6">
+                                        </td>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating6" id="fr6">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Cartoon or Fantasy Violence</label>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating7" id="none7">
+                                        </td>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating7" id="infr7">
+                                        </td>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating7" id="fr7">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Cartoon or Fantasy Violence</label>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating8" id="none8">
+                                        </td>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating8" id="infr8">
+                                        </td>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating8" id="fr8">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Cartoon or Fantasy Violence</label>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating9" id="none9">
+                                        </td>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating9" id="infr9">
+                                        </td>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating9" id="fr9">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Cartoon or Fantasy Violence</label>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating10" id="none10">
+                                        </td>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating10" id="infr10">
+                                        </td>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating10" id="fr10">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Cartoon or Fantasy Violence</label>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating11" id="none11">
+                                        </td>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating11" id="infr11">
+                                        </td>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating11" id="fr11">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Cartoon or Fantasy Violence</label>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating12" id="none12">
+                                        </td>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating12" id="infr12">
+                                        </td>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating12" id="fr12">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Cartoon or Fantasy Violence</label>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating13" id="none13">
+                                        </td>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating13" id="infr13">
+                                        </td>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating13" id="fr13">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Cartoon or Fantasy Violence</label>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating14" id="none14">
+                                        </td>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating14" id="infr14">
+                                        </td>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating14" id="fr14">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Cartoon or Fantasy Violence</label>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating15" id="none15">
+                                        </td>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating15" id="infr15">
+                                        </td>
+                                        </td>
+                                        <td id="last_update">
+                                            <input type="radio" name="rating15" id="fr15">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="float-right">
+                            <input type="submit" value="Done" class="btn btn-success" />
+                            <input type="button" value="Cancel" class="btn btn-default" data-dismiss="modal" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

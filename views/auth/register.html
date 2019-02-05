@@ -9,11 +9,12 @@
   <body style="background-image: url(/assets/images/account/wrapper-bg.jpg);">
     <div class="wrapper">
       <br><br>
+      <center>
       <div class="m-account">
         <div class="row no-gutters flex-row-reverse">
-          <div class="col-md-6">
+          <div class="col-md-12">
             <div class="m-account--form-w">
-              <div class="m-account--form">
+              <div class="m-account--form" style="max-width: 600px;">
                 <div class="logo">
                   <img src="/assets/images/logo/Degg_outline.png" alt="" style="width: 75px;" />
                 </div>
@@ -22,76 +23,110 @@
                   <!-- Error Messages -->
                   <div id="messages" class="sr-only">
                     <% if(typeof errors != 'undefined'){ %>
-                      <% errors.forEach(err => { %>
-                        <ul class="error">
-                          <li>
-                            <%= err.msg %>
-                          </li>
-                        </ul>
-                      <% }); %>
+                    <% errors.forEach(err => { %>
+                    <ul class="error">
+                      <li>
+                        <%= err.msg %>
+                      </li>
+                    </ul>
+                    <% }); %>
                     <% } %>
                   </div>
-                  <!-- Full name -->
+                  <%- messages() %>
+                  <!-- Developer name -->
                   <div class="form-group">
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <i class="fa fa-user"></i>
                       </div>
-                      <input type="text" name="full_name" id="full_name" placeholder="Full name" class="form-control" autocomplete="off"
-                        required />
+                      <input type="text" name="developer_name" id="developer_name" placeholder="Developer name" maxlength="50" class="form-control"
+                        autocomplete="off" required />
                     </div>
                   </div>
-                  <!-- Email -->
+                  <!-- Email Container -->
                   <div class="form-group">
                     <div class="input-group">
+                      <!-- Email -->
                       <div class="input-group-prepend">
                         <i class="fa fa-envelope"></i>
                       </div>
-                      <input type="email" name="email" id="email"placeholder="Email" class="form-control" autocomplete="off" required />
+                      <input type="email" name="email" id="email" placeholder="Email" class="form-control" autocomplete="off"
+                        required />
+                        <!-- Confirm Email -->
+                      <input type="email" name="con_email" id="con_email" style="border-left: 1px solid #757575;" placeholder="Confirm Email" class="form-control" autocomplete="off"
+                        required />
                     </div>
                   </div>
-                  <!-- Password -->
+                  <!-- Website -->
                   <div class="form-group">
                     <div class="input-group">
+                      <div class="input-group-prepend">
+                        <i class="fa fa-globe"></i>
+                      </div>
+                      <input type="url" name="website" id="website" placeholder="Website (optional)" class="form-control" autocomplete="off" />
+                    </div>
+                  </div>
+                  <!-- Phone No. -->
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <i class="fa fa-phone"></i>
+                      </div>
+                      <input type="tel" name="phone_no" id="phone_no" placeholder="Phone number" class="form-control" autocomplete="off" required />
+                    </div>
+                  </div>
+                  <!-- Password Container -->
+                  <div class="form-group">
+                    <div class="input-group">
+                      <!-- Password -->
                       <div class="input-group-prepend">
                         <i class="fa fa-key"></i>
                       </div>
-                      <input type="password" name="password" id="password" maxlength="12" minlength="8" placeholder="Password" class="form-control" autocomplete="off"
-                        required />
+                      <input type="password" name="password" id="password" maxlength="12" minlength="8" placeholder="Password"
+                        class="form-control" autocomplete="off" required />
+                      <!-- Confirm Password -->
+                      <input type="password" name="con_password" id="con_password" style="border-left: 1px solid #757575;" maxlength="12" minlength="8" placeholder="Confirm password"
+                        class="form-control" autocomplete="off" required />
                     </div>
                   </div>
-                  <!-- Confirm Password -->
-                  <div class="form-group">
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <i class="fa fa-unlock"></i>
+                  <p class="col-12 col-sm-12 col-md-12">Read and agree to the <a href="/distribution_agreement" class="text-info" target="_blank">Degg Store Developer Station distribution agreement.</a></p>
+                  <div style="display: flex; text-align: left;">
+                    <!-- Agree Terms -->
+                    <div class="col-4 col-sm-4 col-md-4">
+                      <div class="checkbox checkbox-primary">
+                        <input type="checkbox" name="agree_terms" id="agree_terms" required />
+                        <label for="agree_terms" class="text-light">
+                          <span>I agree, and I am willing to associate my account registration with the Degg Store Developer Station distribution agreement.</span>
+                        </label>
                       </div>
-                      <input type="password" name="con_password" id="con_password" maxlength="12" minlength="8" placeholder="Confirm password" class="form-control" autocomplete="off" required />
                     </div>
-                  </div>
-                  <!-- Company name -->
-                  <div class="form-group">
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <i class="fa fa-institution"></i>
+                    <!-- New Tips -->
+                    <div class="col-4 col-sm-4 col-md-4">
+                      <div class="checkbox checkbox-primary">
+                        <input type="checkbox" name="want_new_tips" id="want_new_tips" />
+                        <label for="want_new_tips" class="text-light">
+                          <span class="text-muted">I'd like to receive new features, announcements and tips to help improve my apps </span>
+                        </label>
                       </div>
-                      <input type="text" name="company_name" id="company_name" placeholder="Company's name" class="form-control" autocomplete="off"
-                        required />
                     </div>
-                  </div>
-                  <div class="form-group pt-3">
-                    <label for="agree_terms" class="text-light">
-                        <input type="checkbox" name="agree_terms" id="agree_terms" style="vertical-align: middle; width: 20px;" required />
-                        I agree to all <a href="/term_of_service" class="text-info" target="_blank">terms of service</a>
-                    </label>
+                    <!-- Give Feedback -->
+                    <div class="col-4 col-sm-4 col-md-4">
+                      <div class="checkbox checkbox-primary">
+                        <input type="checkbox" name="will_give_feedback" id="will_give_feedback" />
+                        <label for="will_give_feedback" class="text-light">
+                        <span class="text-muted">I'd like to give feedback to help improve the <b style="font-weight: lighter;">Degg Developer
+                            Station</b> </span>
+                        </label>
+                      </div>
+                    </div>
                   </div>
                   <div class="m-account--actions">
                     <button type="submit" class="btn btn-block btn-rounded btn-success">
-                      create
+                      Continue to payment
                     </button>
                   </div>
                   <br>
-                  <div class="text-center">
+                  <div class="text-right">
                     <a href="/lock" class="text-muted text-center">Have an account?, Sign in</a>
                   </div>
                 </form>
@@ -100,6 +135,7 @@
           </div>
         </div>
       </div>
+      </center>
     </div>
     <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/js/main.js"></script>

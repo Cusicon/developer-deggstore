@@ -1,8 +1,8 @@
 // Load StoreListing as the default when '/app/publish/draft' is loaded
 
 $(document).ready(() => {
-  LoadPublishMenus();
-  setCategory();
+	LoadPublishMenus();
+	setCategory();
 });
 
 const loader = `
@@ -13,71 +13,73 @@ const loader = `
       </center>
     `;
 
+function Load(selector, url) {
+	$(selector).html(loader);
+	$.ajax({
+		type: "GET",
+		url: url,
+		success: function(data, msg) {
+			$(selector).html(data);
+		},
+		error: function(xhr, txtstats, err) {
+			$(selector).html(loader);
+		}
+	});
+}
+
 // Load publish menu
 function LoadPublishMenus() {
-  // app_packages
-  $("#app_packages").click(e => {
-    var href = $("#app_packages").attr("data-href");
-    // Empty {Body} and add loader
-    // before displaying another view
-    $("#Body").html("");
-    $("#Body").html(loader);
-    $("#Body").load(href);
-    // Add active to selected
-    $(".app_menu li a").removeClass("active");
-    console.log(e.target);
-    $(e.target).addClass("active");
-  });
+	// app_packages
+	$("#app_packages").click(e => {
+		var href = $("#app_packages").attr("data-href");
+		// Load ${href} to {#Body}
+		Load("#Body", href);
+		// Add active to selected
+		$(".app_menu li a").removeClass("active");
+		console.log(e.target);
+		$(e.target).addClass("active");
+	});
 
-  // test_flight
-  $("#test_flight").click(e => {
-    var href = $("#test_flight").attr("data-href");
-    // Empty {Body} and add loader
-    // before displaying another view
-    $("#Body").html("");
-    $("#Body").html(loader);
-    $("#Body").load(href);
-    // Add active to selected
-    $(".app_menu li a").removeClass("active");
-    console.log(e.target);
-    $(e.target).addClass("active");
-  });
+	// test_flight
+	$("#test_flight").click(e => {
+		var href = $("#test_flight").attr("data-href");
+		// Load ${href} to {#Body}
+		Load("#Body", href);
+		// Add active to selected
+		$(".app_menu li a").removeClass("active");
+		console.log(e.target);
+		$(e.target).addClass("active");
+	});
 
-  // services
-  $("#services").click(e => {
-    var href = $("#services").attr("data-href");
-    // Empty {Body} and add loader
-    // before displaying another view
-    $("#Body").html("");
-    $("#Body").html(loader);
-    $("#Body").load(href);
-    // Add active to selected
-    $(".app_menu li a").removeClass("active");
-    console.log(e.target);
-    $(e.target).addClass("active");
-  });
+	// services
+	$("#services").click(e => {
+		var href = $("#services").attr("data-href");
+		// Load ${href} to {#Body}
+		Load("#Body", href);
+		// Add active to selected
+		$(".app_menu li a").removeClass("active");
+		console.log(e.target);
+		$(e.target).addClass("active");
+	});
 
-  // in_app_purchase
-  $("#in_app_purchase").click(e => {
-    var href = $("#in_app_purchase").attr("data-href");
-    // Empty {Body} and add loader
-    // before displaying another view
-    $("#Body").html("");
-    $("#Body").html(loader);
-    $("#Body").load(href);
-    // Add active to selected
-    $(".app_menu li a").removeClass("active");
-    console.log(e.target);
-    $(e.target).addClass("active");
-  });
+	// in_app_purchase
+	$("#in_app_purchase").click(e => {
+		var href = $("#in_app_purchase").attr("data-href");
+		// Load ${href} to {#Body}
+		Load("#Body", href);
+		// Add active to selected
+		$(".app_menu li a").removeClass("active");
+		console.log(e.target);
+		$(e.target).addClass("active");
+	});
 }
 
 function setCategory() {
-  var application = $("#application");
-  var game = $("#game");
-  var app_type = $("#app_type");
-  var app_category = $("#app_category");
-  var application_options = `
+	var application = $("#application");
+	var game = $("#game");
+	var app_type = $("#app_type");
+	var app_category = $("#app_category");
+	var application_options = `
   <option value="art_&_design">Art & Design</option>
   <option value="auto_&_vehicles">Auto & Vehicles</option>
   <option value="beauty">Beauty</option>
@@ -108,19 +110,19 @@ function setCategory() {
   <option value="weather">Weather</option>
   `;
 
-  var game_options = `
+	var game_options = `
   <option value="arcade">Arcade</option>
   <option value="action">Action</option>
   <option value="adventure">Adventure</option>
   `;
 
-  app_type.change(e => {
-    if (app_type.val() == "application") {
-      app_category.html(application_options);
-    } else if (app_type.val() == "game") {
-      app_category.html(game_options);
-    }else{
-      app_category.html(`<option label="Choose a category"></option>`);
-    }
-  });
+	app_type.change(e => {
+		if (app_type.val() == "application") {
+			app_category.html(application_options);
+		} else if (app_type.val() == "game") {
+			app_category.html(game_options);
+		} else {
+			app_category.html(`<option label="Choose a category"></option>`);
+		}
+	});
 }

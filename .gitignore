@@ -1,4 +1,5 @@
 /node_modules
-/api/log
+/api/log/*
 /.vscode
 /.vs
+ADE-StudentBooks.txt
