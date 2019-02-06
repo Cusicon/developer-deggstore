@@ -18,7 +18,7 @@
                         <span> Dashboard </span>
                     </a>
                 </li>
-
+                <% if(app.status == "published") { %>
                 <li>
                     <a href="/app/publish/<%= app._id %>/statistics" data-href="/app/publish/
                     <%= app._id %>/statistics">
@@ -26,7 +26,7 @@
                         <span> Statistics </span>
                     </a>
                 </li>
-
+                <% } %>
                 <li>
                     <a href="javascript: void(0);">
                         <i class="mdi mdi-television-guide"></i>
@@ -34,7 +34,7 @@
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="/app/publish/<%= app._id %>/crashes" data-href="/app/publish/<%= app._id %>/crashes">Crashes & ANRs</a></li>
+                        <% if(app.status == "published") { %><li><a href="/app/publish/<%= app._id %>/crashes" data-href="/app/publish/<%= app._id %>/crashes">Crashes & ANRs</a></li><% } %>
                         <li><a href="/app/publish/<%= app._id %>/services" data-href="/app/publish/<%= app._id %>/services">Services & APIs</a></li>
                     </ul>
                 </li>
@@ -66,7 +66,7 @@
                         <li><a href="/app/publish/<%= app._id %>/storelisting" data-href="/app/publish/<%= app._id %>/storelisting">Store listing</a></li>
                         <li><a href="/app/publish/<%= app._id %>/storelisting_exp" data-href="/app/publish/<%= app._id %>/storelisting_exp">Store listing experiments</a></li>
                         <li><a href="/app/publish/<%= app._id %>/in_app_products" data-href="/app/publish/<%= app._id %>/in_app_products">In-app products</a></li>
-                        <li><a href="/app/publish/<%= app._id %>/sales" data-href="/app/publish/<%= app._id %>/sales">Sales</a></li>
+                        <% if(app.status == "published") { %><li><a href="/app/publish/<%= app._id %>/sales" data-href="/app/publish/<%= app._id %>/sales">Sales</a></li><% } %>
                     </ul>
                     </a>
                 </li>
@@ -78,14 +78,14 @@
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="/app/publish/<%= app._id %>/acquisition" data-href="/app/publish/<%= app._id %>/acquisition">Acquisition reports</a></li>
+                        <% if(app.status == "published") { %><li><a href="/app/publish/<%= app._id %>/acquisition" data-href="/app/publish/<%= app._id %>/acquisition">Acquisition reports</a></li><% } %>
                         <li><a href="/app/publish/<%= app._id %>/adwords_campaigns" data-href="/app/publish/<%= app._id %>/adwords_campaigns">Adwords campaigns</a></li>
                         <li><a href="/app/publish/<%= app._id %>/promotions" data-href="/app/publish/<%= app._id %>/promotions">Promotions</a></li>
                         <li><a href="/app/publish/<%= app._id %>/optimization_tips" data-href="/app/publish/<%= app._id %>/optimazation_tips">Optimazation tips</a></li>
                     </ul>
                     </a>
                 </li>
-                
+                <% if(app.status == "published") { %>
                 <li>
                     <a href="javascript: void(0);">
                         <i class="mdi mdi-square-inc-cash"></i>
@@ -98,7 +98,9 @@
                     </ul>
                     </a>
                 </li>
-                                
+                <% } %>    
+                
+                <% if(app.status == "published") { %>
                 <li>
                     <a href="javascript: void(0);">
                         <i class="mdi mdi-comment-processing-outline"></i>
@@ -113,6 +115,7 @@
                     </ul>
                     </a>
                 </li>
+                <% } %>
             </ul>
         </div>
         <!-- Sidebar -->
