@@ -1,4 +1,6 @@
 const express = require("express");
+const fs = require("fs");
+const bcrypt = require("bcryptjs");
 const router = express();
 const address = require("address");
 const path = require("path");
@@ -15,6 +17,20 @@ router.get("/", (req, res) => {
 		res.redirect("/app/dashboard");
 	}
 });
+
+function createPackagesDirectory(userEmail) {
+	bcrypt.genSalt(5, (err, salt) => { // generate salt
+		bcrypt.hash(userEmail, salt, (err, hash) => {
+			userEmail = hash;
+			fs.mkdir(path.join(__dirname, `../../../public/store/${userEmail}`), err => { // Make directory
+				if(err) console.log(err);
+				else{
+					console.log("Packages directory created!!!");
+				}
+			}); 
+		});
+	});
+}
 
 router.post("/", (req, res) => {
 	if (!req.user) {
@@ -99,17 +115,18 @@ router.post("/", (req, res) => {
 					console.log(err);
 				} else {
 					if (developer) {
-						var message = `${email} already exist!.`;
+						var message = `Email already exist!, Try another.`;
 						req.flash("error", message);
 						res.location("/register");
 						res.redirect("/register");
 					} else {
 						Developer.createDeveloper(newDeveloper, (err, developer) => {
 							if (err) {
-								console.log(`Error ${err}`);
+								console.log(`Error: ${err}`);
 							} else {
 								var message = `Account created!`;
 								console.log(message);
+								createPackagesDirectory(email); // Create packages directory
 								req.flash("success", message);
 								res.location("/lock");
 								res.redirect("/lock");

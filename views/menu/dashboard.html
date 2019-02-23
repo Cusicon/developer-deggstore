@@ -24,7 +24,7 @@
             </div>
             <div class="modal-body">
               <div class="form-group">
-                <form action="/app/publish/draft" method="POST">
+                <form method="POST">
                   <b>Default language <b class="text-danger">*</b></b><br>
                   <select name="default_language" id="default_language" style="border: 1px solid #dddddd;" class="btn btn-sm w-md waves-effect waves-light"
                     required>
@@ -40,7 +40,7 @@
                   <%- messages() %>
                   <div class="float-right">
                     <input type="submit" name="createBtn" id="createBtn" style="cursor: no-drop; opacity: 0.2;" disabled
-                      value="Create" class="btn btn-success" />
+                      value="Create" formaction="/app/publish/draft" class="btn btn-success" />
                     <input type="button" name="cancelBtn" id="cancelBtn" value="Cancel" class="btn btn-default"
                       data-dismiss="modal" />
                   </div>
@@ -68,7 +68,7 @@
         <div class="col-sm-3 col-xl-2">
           <div class="file-man-box">
             <div class="file-img-box">
-              <img src="<%= app.app_icon.path || '/store/src/images/icons/Degg_default_icon.png'%>" alt="icon" />
+              <img src="<%= app.app_icon.path || '/assets/images/draft_icon.png'%>" alt="App icon" />
             </div>
   
             <div class="file-man-title">

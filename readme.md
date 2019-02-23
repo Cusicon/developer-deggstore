@@ -1,6 +1,6 @@
 # Developer-Deggstore
 
-> A Developer section for deggstore
+> The Developer station for deggstore
 
 ## Dev
 

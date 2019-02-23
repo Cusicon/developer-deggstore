@@ -14,7 +14,7 @@ router.post("/draft", (req, res) => {
 	// Assigning variables
 	var default_language = req.body.default_language;
 	var version = "1.0";
-	var app_title = req.body.app_title;
+	var app_title = req.body.app_title.trim();
 	var app_name = app_title.toLowerCase();
 	var developer = req.user.id;
 	var status = "draft";
@@ -44,7 +44,7 @@ router.post("/draft", (req, res) => {
 			if (err) console.log(err);
 			else {
 				if (result) {
-					var message = `${app_title} already exist!, Try something unique.`;
+					var message = `App name already exist!, Try something unique.`;
 					req.flash("error", message);
 					res.location("/app/dashboard");
 					res.redirect("/app/dashboard");
@@ -62,86 +62,6 @@ router.post("/draft", (req, res) => {
 			}
 		});
 	}
-});
-
-// Split Keywords
-function getKeywords(keyword = "") {
-	var keywords = keyword.split(",");
-	return keywords;
-}
-
-// Save Draft
-router.post("/:id/save", (req, res) => {
-	console.log("Assigning variables\n");
-	// Assigning variables
-	var appID = req.params.id;
-	var default_language = req.body.default_language;
-	var version = "1.0";
-	var app_title = req.body.app_title;
-	var developer = req.user.id;
-	var status = "draft";
-	var app_short_desc = req.body.app_short_desc;
-	var app_long_desc = req.body.app_long_desc;
-	var app_keywords = req.body.app_keywords;
-	var app_promo_video = req.body.app_promo_video || "undefined";
-	var app_type = req.body.app_type;
-	var app_category = req.body.app_category;
-	var app_price = req.body.app_price;
-	var website = req.body.website || "undefined";
-	var email = req.body.email;
-	var phone = req.body.phone || "undefined";
-	var review_first_name = req.body.review_first_name;
-	var review_last_name = req.body.review_last_name;
-	var review_phone_no = req.body.review_phone_no;
-	var review_email = req.body.review_email;
-	var privacy = req.body.privacy || "undefined";
-	var last_updated = new Date().toString();
-
-	console.log("Saving Draft...\n");
-	var newApp = new App({
-		default_language: default_language,
-		version: version,
-		app_title: app_title,
-		app_name: app_title.toLowerCase(),
-		developer: developer,
-		status: status,
-		app_short_desc: app_short_desc,
-		app_long_desc: app_long_desc,
-		app_keywords: getKeywords(app_keywords),
-		app_promo_video: app_promo_video,
-		app_type: app_type,
-		app_category: app_category,
-		app_price: app_price,
-		website: website,
-		email: email,
-		phone: phone,
-		app_review_info: {
-			first_name: review_first_name,
-			last_name: review_last_name,
-			phone_no: review_phone_no,
-			email: review_email
-		},
-		privacy: privacy,
-		last_updated: last_updated
-	});
-	App.updateApp(appID, newApp, (err, app, result) => {
-		if (err) console.log(err);
-		else {
-			console.log("Draft saved!\n");
-			console.log(app);
-			var message = `Draft saved!`;
-			console.log(message + "\n");
-			req.flash("success", message);
-			// res.render("./publish", { title, app });
-			res.location("/app/publish/draft/" + appID);
-			res.redirect("/app/publish/draft/" + appID);
-		}
-	});
-});
-
-// Calculate Rating
-router.post("/:id/calculateRating", (req, res) => {
-	res.send(title);
 });
 
 /******************** EXISTING APPS ROUTES ********************/

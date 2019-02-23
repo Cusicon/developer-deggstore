@@ -17,6 +17,7 @@ var DeveloperSchema = Schema({
 	date_joined: String,
 	has_access: Boolean,
 	access_expiry: String,
+	appsDirectory: String, // New: for packageDirectory name
 	linked_account: [],
 	page: {},
 	account_details: {},

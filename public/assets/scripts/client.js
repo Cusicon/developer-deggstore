@@ -1,8 +1,10 @@
 $(document).ready(function() {
 	// OnKeypress show {Create} Button
 	function authCreateADraftApp() {
-		$("#app_title").on("input", () => {
-			if ($("#app_title").val() != "") {
+		$("#app_title").on("input", (e) => {
+			var inputVal = $("#app_title").val();
+			if (inputVal != "" && inputVal.length > 3) {
+				inputVal = inputVal.trim();
 				$("#createBtn")
 					.css({ opacity: "1", cursor: "pointer" })
 					.removeAttr("disabled");
@@ -10,6 +12,7 @@ $(document).ready(function() {
 				$("#createBtn")
 					.css({ opacity: ".2", cursor: "no-drop" })
 					.attr("disabled");
+					e.preventDefault();
 			}
 		});
 	}

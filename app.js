@@ -13,7 +13,7 @@ const session = require("express-session");
 const passport = require("passport");
 const multer = require("multer");
 const LocalStrategy = require("passport-local").Strategy;
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 2000;
 
 /********** GLOBAL VARIABLES ****************/
 global.Log;
@@ -112,7 +112,7 @@ app.get("/app/*", (req, res, next) => {
 		// Sign Out
 		res.redirect("/lock/out");
 	} else {
-		Log(`${User.developer_name || "none"} is active!`);
+		Log(`${User.email || "none"} is active!`);
 	}
 	next();
 });
@@ -124,7 +124,7 @@ app.post("/app/*", (req, res, next) => {
 		// Sign Out
 		res.redirect("/lock/out");
 	} else {
-		Log(`${User.developer_name || "none"} is active!`);
+		Log(`${User.email || "none"} is active!`);
 	}
 	next();
 });

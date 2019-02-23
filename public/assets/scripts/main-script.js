@@ -6,12 +6,12 @@ $(document).ready(() => {
 });
 
 const loader = `
-      <center style="position: absolute; z-index: -2; width: 100%;">
-        <div id="loader_con" style="margin: 250px;">
-          <div class="loader" style="display: block;"></div>
-        </div>
-      </center>
-    `;
+	<center style="position: absolute; z-index: -2; width: 100%;">
+		<div id="loader_con" style="margin: 250px;">
+			<div class="loader" style="display: block;"></div>
+		</div>
+	</center>
+`;
 
 function Load(selector, url) {
 	$(selector).html(loader);
@@ -80,40 +80,50 @@ function setCategory() {
 	var app_type = $("#app_type");
 	var app_category = $("#app_category");
 	var application_options = `
-  <option value="art_&_design">Art & Design</option>
-  <option value="auto_&_vehicles">Auto & Vehicles</option>
-  <option value="beauty">Beauty</option>
-  <option value="book_&_References">Book & References</option>
-  <option value="business">Business</option>
-  <option value="comics">Comics</option>
-  <option value="communication">Communication</option>
-  <option value="dating">Dating</option>
-  <option value="education">Education</option>
-  <option value="entertainment">Entertainment</option>
-  <option value="finance">Finance</option>
-  <option value="health_&_fitness">Health & Fitness</option>
-  <option value="library_&_demo">Library & Demo</option>
-  <option value="lifestyle">Lifestyle</option>
-  <option value="media_&_video">Media & Video</option>
-  <option value="medical">Medical</option>
-  <option value="music_&_audio">Music & Audio</option>
-  <option value="news_&_magazines">News & Magazines</option>
-  <option value="personalisation">Personalisation</option>
-  <option value="photography">Photography</option>
-  <option value="productivity">Productivity</option>
-  <option value="shopping">Shopping</option>
-  <option value="social">Social</option>
-  <option value="sports">Sports</option>
-  <option value="tools">Tools</option>
-  <option value="transport">Transport</option>
-  <option value="travels_&_local">Travels & Local</option>
-  <option value="weather">Weather</option>
+  <option value="Art & Design">Art & Design</option>
+  <option value="Auto & Vehicles">Auto & Vehicles</option>
+  <option value="Beauty">Beauty</option>
+  <option value="Book & References">Book & References</option>
+  <option value="Business">Business</option>
+  <option value="Comics">Comics</option>
+  <option value="Communication">Communication</option>
+  <option value="Dating">Dating</option>
+  <option value="Education">Education</option>
+  <option value="Entertainment">Entertainment</option>
+  <option value="Finance">Finance</option>
+  <option value="Health & Fitness">Health & Fitness</option>
+  <option value="Library & Demo">Library & Demo</option>
+  <option value="Lifestyle">Lifestyle</option>
+  <option value="Media & Video">Media & Video</option>
+  <option value="Medical">Medical</option>
+  <option value="Music & Audio">Music & Audio</option>
+  <option value="News & Magazines">News & Magazines</option>
+  <option value="Personalisation">Personalisation</option>
+  <option value="Photography">Photography</option>
+  <option value="Productivity">Productivity</option>
+  <option value="Shopping">Shopping</option>
+  <option value="Social">Social</option>
+  <option value="Sports">Sports</option>
+  <option value="Tools">Tools</option>
+  <option value="Transport">Transport</option>
+  <option value="Travels & Local">Travels & Local</option>
+  <option value="Weather">Weather</option>
   `;
 
 	var game_options = `
-  <option value="arcade">Arcade</option>
-  <option value="action">Action</option>
-  <option value="adventure">Adventure</option>
+	<option value="Action">Action</option>
+	<option value="Adventure">Adventure</option>
+	<option value="Arcade">Arcade</option>
+	<option value="Combat">Combat</option>
+	<option value="Educational">Educational</option>
+	<option value="First Person Shooter">First Person Shooter (FPS)</option>
+	<option value="Massively Multiplayer Online">Massively Multiplayer Online (MMO)</option>
+	<option value="Simulations">Simulations</option>
+	<option value="Puzzle">Puzzle</option>
+	<option value="Real-Time Strategy">Real-Time Strategy</option>
+	<option value="Role Playing">Role Playing</option>
+	<option value="Sports">Sports</option>
+	<option value="Stealth shooter">Stealth Shooter</option>
   `;
 
 	app_type.change(e => {

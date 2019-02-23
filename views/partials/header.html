@@ -19,6 +19,7 @@
 		style="background: linear-gradient(#eeeeee, #ededed); border-bottom: 1px solid #dedede;"
 	>
 		<ul class="list-inline float-right mb-0">
+			<!-- Notification Section -->
 			<li class="list-inline-item dropdown notification-list">
 				<a
 					class="nav-link dropdown-toggle arrow-none waves-light waves-effect"
@@ -29,7 +30,7 @@
 					aria-expanded="true"
 				>
 					<i class="dripicons-bell noti-icon"></i>
-					<span class="badge badge-danger noti-icon-badge">4</span>
+					<!-- <span class="badge badge-danger noti-icon-badge">4</span> -->
 				</a>
 				<div
 					class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-lg"
@@ -75,14 +76,75 @@
 					</a>
 
 					<!-- All-->
-					<a
-						href="javascript:void(0);"
-						class="dropdown-item notify-item"
-					>
+					<a href="javascript:void(0);" class="dropdown-item notify-item">
 						View All
 					</a>
 				</div>
 			</li>
+
+			<!-- Help Section -->
+			<li class="list-inline-item dropdown notification-list">
+				<a
+					class="nav-link dropdown-toggle arrow-none waves-light waves-effect"
+					data-toggle="dropdown"
+					href="#"
+					role="button"
+					aria-haspopup="false"
+					aria-expanded="true"
+				>
+					<i class="dripicons-question noti-icon"></i>
+				</a>
+				<div
+					class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-lg"
+					aria-labelledby="Preview"
+					x-placement="bottom-end"
+					style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-214px, 72px, 0px); border: none; box-shadow: 0px 1px 2px #0000003a;"
+				>
+					<!-- item-->
+					<div
+						class="dropdown-item noti-title"
+						style="background-color: #343c49;"
+					>
+						<h5>Notification</h5>
+					</div>
+
+					<!-- item-->
+					<a href="javascript:void(0);" class="dropdown-item notify-item">
+						<div class="notify-icon bg-success">
+							<i class="icon-bubble"></i>
+						</div>
+						<p class="notify-details">
+							Robert S. Taylor commented on Admin<small class="text-muted"
+								>1 min ago</small
+							>
+						</p>
+					</a>
+
+					<!-- item-->
+					<a href="javascript:void(0);" class="dropdown-item notify-item">
+						<div class="notify-icon bg-info"><i class="icon-user"></i></div>
+						<p class="notify-details">
+							New user registered.<small class="text-muted">1 min ago</small>
+						</p>
+					</a>
+
+					<!-- item-->
+					<a href="javascript:void(0);" class="dropdown-item notify-item">
+						<div class="notify-icon bg-danger"><i class="icon-like"></i></div>
+						<p class="notify-details">
+							Carlos Crouch liked <b>Admin</b
+							><small class="text-muted">1 min ago</small>
+						</p>
+					</a>
+
+					<!-- All-->
+					<a href="javascript:void(0);" class="dropdown-item notify-item">
+						View All
+					</a>
+				</div>
+			</li>
+
+			<!-- User's Section -->
 			<li class="list-inline-item dropdown notification-list">
 				<!-- Profile -->
 				<a
@@ -94,7 +156,7 @@
 					aria-expanded="false"
 				>
 					<div
-						style="background-color: #343c49; margin: 20px 15px; height: 30px; width: 30px; line-height: 30px; text-align: center; margin-right: 10px; border-radius: 50%;"
+						style="background-color: #343c49; margin: 20px 5px; height: 30px; width: 30px; line-height: 30px; text-align: center; border-radius: 50%;"
 						class="text-light notify-icon"
 						title="Signed in as <%= user.developer_name %>"
 					>
@@ -121,10 +183,19 @@
 							<%= user.developer_name.replace(user.developer_name,
 							user.developer_name.charAt(0).toUpperCase()); %>
 						</div>
-						<div style="display: inline-block; vertical-align: middle; padding: 0px 5px; color: #eeeeee;"><%= user.developer_name %></div>
-						<div class="text-muted" style="font-size: 80%; vertical-align: middle; padding: 0px 15px;"><%= user.email %></div>
+						<div
+							style="display: inline-block; vertical-align: middle; padding: 0px 5px; color: #eeeeee;"
+						>
+							<%= user.developer_name %>
+						</div>
+						<div
+							class="text-muted"
+							style="font-size: 80%; vertical-align: middle; padding: 0px 15px;"
+						>
+							<%= user.email %>
+						</div>
 					</div>
-					<br><br>
+					<br /><br />
 					<!-- item-->
 					<a href="/lock/out" class="dropdown-item notify-item">
 						<i class="mdi mdi-power"></i> <span>Sign out</span>
@@ -146,7 +217,8 @@
 				<li class="hide-phone app-search">
 					<% var arrTitle = title.split("::"); %>
 					<span style="font-weight: lighter; float: left; font-size: 20px;">
-						<%= title.replace(title, arrTitle[0]) %></span>
+						<%= title.replace(title, arrTitle[0]) %></span
+					>
 					<form action="/app/search" method="GET" role="search" class="">
 						<input
 							type="text"

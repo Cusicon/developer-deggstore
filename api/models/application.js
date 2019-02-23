@@ -11,7 +11,7 @@ var AppSchema = Schema({
 	app_short_desc: String,
 	app_long_desc: String,
 	app_keywords: [String],
-	app_snapshots: [
+	app_screenshots: [
 		{
 			title: String,
 			path: String
@@ -78,4 +78,8 @@ module.exports.getAppByDeveloperID = function(devID, callback) {
 module.exports.getAppByTitle = function(app_name, callback) {
 	var query = { app_name: app_name };
 	App.findOne(query, callback);
+};
+
+module.exports.getAppByIdandUpdate = function (id, update, callback) {
+	App.findByIdAndUpdate(id, update, callback)
 };

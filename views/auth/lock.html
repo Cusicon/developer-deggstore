@@ -3,65 +3,107 @@
   <head>
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/assets/css/_style.css" />
+    <style>
+      input[type="submit"] {
+        cursor: pointer; width: 50px; 
+        border: none; 
+        color: #ffffff; 
+        background: #494f50; 
+        font-size: 20px; 
+        border-radius: 0px 4px 4px 0px;
+      }
+
+      input[type="submit"]:active ,
+      input[type="submit"]:focus ,
+      input[type="submit"]:hover {
+        background-color: #1b2223 !important;
+      }
+
+    </style>
   </head>
 
   <body style="background-image: url(/assets/images/account/wrapper-bg.jpg);">
     <div class="wrapper">
-      <div class="m-account-w bg--img">
-        <div class="m-account m-account-lock">
-          <div class="m-account--form-w">
-            <div class="m-account--form m-account--lock">
-              <div class="m-account--user">
-                <img src="/assets/images/logo/Degg_outline.png" alt="logo" style="border-radius: 0 !important; width: 75px;">
+      <div class="m-account-w bg--img" style="display: block;">
+        <div class="m-account--user">
+          <img src="/assets/images/logo/degg_bw.png" alt="logo" style="border-radius: 0 !important;">
+          <h3 style="font-weight: lighter; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" class="text-dark">Sign in to Degg Station.</h3>
+        </div>
+        <center>
+          <div class="m-account m-account-lock">
+            <div class="m-account--form-w" style="padding-bottom: 20px;">
+              <div class="m-account--form m-account--lock">
+                <form action="/lock/unlock" method="POST">
+                  <div class="sr-only">
+                    <%- messages() %>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <i class="fa fa-envelope"></i>
+                      </div>
+                      <input
+                        name="email"
+                        placeholder="Email"
+                        class="form-control"
+                        autocomplete="off"
+                        autofocus
+                        required
+                        type="email"
+                      />
+                    </div>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <i class="fa fa-key"></i>
+                      </div>
+                      <input
+                        name="password"
+                        placeholder="Password"
+                        class="form-control"
+                        style="border: none;"
+                        autocomplete="off"
+                        maxlength="12"
+                        required
+                        type="password"
+                      />
+                      <input
+                        value="&rarr;"
+                        type="submit"
+                      />
+                    </div>
+                    <!-- <br>
+                    <div class="text-center">
+                      <a href="/reset_password" class="text-muted ">Forgot password?</a>
+                    </div> -->
+                    <div style="margin-top: 40px; padding: 10px; border-top: 1px solid #494f50;" class="">
+                      New to Degg Station?&nbsp;<a href="/register" class="text-success" style="text-decoration: underline;">Sign Up</a>.
+                    </div>
+                  </div>
+                </form>
               </div>
-              <form action="/lock/unlock" method="POST">
-                <div class="sr-only">
-                  <%- messages() %>
-                </div>
-                <div class="form-group">
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <i class="fa fa-envelope"></i>
-                    </div>
-                    <input
-                      name="email"
-                      placeholder="Email"
-                      class="form-control"
-                      autocomplete="off"
-                      autofocus
-                      required
-                      type="email"
-                    />
-                  </div>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <i class="fa fa-key"></i>
-                    </div>
-                    <input
-                      name="password"
-                      placeholder="Password"
-                      class="form-control"
-                      autocomplete="off"
-                      maxlength="12"
-                      required
-                      type="password"
-                    />
-                    <input
-                      class="btn-secondary"
-                      style="cursor: pointer; width: 50px; border: none; background: #494f50; font-size: 20px; border-radius: 0px 5px 5px 0px;"
-                      value="&rarr;"
-                      type="submit"
-                    />
-                  </div>
-                  <br>
-                  <div class="text-left">
-                    <a href="/register" class="text-muted ">Create an account</a>
-                  </div>
-                </div>
-              </form>
             </div>
           </div>
-        </div>
+          <br>
+          <center>
+            <footer class="text-light" style="position: relative; border: none;">
+              <strong>
+                ©
+                <%= new Date().getFullYear().toString(); %>
+                <a href="javascript:void(0);" class="text-light">Deggstore</a>.</strong>
+              <span>All rights reserved.</span>
+              <br><br>
+              <ul style="display: inline-flex; list-style-type: none; padding: 0%; margin: 0%;">
+                <li><a style="display: block; margin: 2px 10px; padding: 2px;" class="text-light" href="/help" target="_blank"
+                    rel="noopener noreferrer">Help</a></li>
+                <li><a style="display: block; margin: 2px 10px; padding: 2px;" class="text-light" href="/term_of_service"
+                    target="_blank" rel="noopener noreferrer">Terms of Service</a></li>
+                <li><a style="display: block; margin: 2px 10px; padding: 2px;" class="text-light" href="/privacy_policy"
+                    target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+                <li><a style="display: block; margin: 2px 10px; padding: 2px;" class="text-light" href="/distribution_agreement"
+                    target="_blank" rel="noopener noreferrer">Developer Distribution Agreement</a></li>
+              </ul>
+            </footer>
+          </center>
       </div>
     </div>
     <script src="/assets/js/jquery.min.js"></script>

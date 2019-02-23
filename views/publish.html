@@ -28,12 +28,11 @@
 								<% }); %> <% } %>
 							</div>
 							<%- messages() %>
-							<div class="row" id="Body" style="margin: 25px 50px;">
-                <% if(typeof app != 'undefined'){ %> 
-									
-								  <!-- Body Content will be here -->
-                  <%- include(src); %> 
-                <% } %>
+							<div class="container" id="Body">
+							<% if(typeof app != 'undefined'){ %> 
+								<!-- Body Content will be here -->
+								<%- include(src); %> 
+							<% } %>
 							</div>
 						</div>
 					</div>
@@ -43,6 +42,7 @@
 			</div>
 			<!-- container -->
 		</div>
+		<br><br>
 		<!-- content -->
 		<!-- Footer -->
 		<%- include("./partials/footer.html"); %>
